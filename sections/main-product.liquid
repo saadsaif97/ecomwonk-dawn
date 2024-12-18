@@ -456,7 +456,7 @@
                 {%- assign family_collection = collections[family_collection_handle] -%}
                 
                 {%- if family_collection != blank and family_collection.products_count > 1 -%}
-                  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); gap: 10px;">
+                  <div style="display: grid; grid-template-columns: repeat(auto-fit, 80px); gap: 10px;">
                     {%- for fc_product in family_collection.products -%}
                       {%- assign selected = false -%}
                       {%- if fc_product.handle == product.handle -%}
