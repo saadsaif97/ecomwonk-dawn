@@ -452,18 +452,19 @@
 
               {%- when 'variant_picker' -%}
 
-                <h3>Select the wood:</h3>
-                {%- assign oak = false -%}
-                {%- assign pine = false -%}
-                {%- if product.handle == "relief-oak-individuell" -%}
-                    {%- assign oak = true -%}
-                  {%- elsif product.handle == "relief-pine-individuell" -%}
-                    {%- assign pine = true -%}
-                {%- endif -%}
-                            
-                <div style="display: flex;width: 100%;justify-content: space-between; border-radius: 50px; overflow: hidden; border: 2px solid black;">
-                  <a class="button {%- unless oak %} button--tertiary {%- endunless -%}" style="width: 100%; border-radius: 0;" href="https://ecomwonk.myshopify.com/products/relief-oak-individuell">Oak</a>
-                  <a class="button {%- unless pine %} button--tertiary {%- endunless -%}" style="width: 100%; border-radius: 0;" href="https://ecomwonk.myshopify.com/products/relief-pine-individuell">Pine</a>
+                {%- assign family_collection_handle = product.metafields.custom.family_collection | handleize | prepend: 'collection-'  -%}
+                {%- assign family_collection = collections[family_collection_handle] -%}
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); gap: 10px;">
+                  {%- for fc_product in family_collection.products -%}
+                    {%- assign selected = false -%}
+                    {%- if fc_product.handle == product.handle -%}
+                      {%- assign selected = true -%}
+                    {%- endif -%}
+                    <a href="{{ fc_product.url }}" style="display: flex; align-items: center; {% if selected %} border: 2px solid; {% endif %}">
+                      <img style="width: 100%;" src="{{ fc_product.featured_image | image_url: width: 80  }}" alt="{{ fc_product.title }}">
+                    </a>
+                  {%- endfor -%}
                 </div>
                           
                 {% render 'product-variant-picker', product: product, block: block, product_form_id: product_form_id %}
