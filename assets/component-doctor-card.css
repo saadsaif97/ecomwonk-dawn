@@ -1,0 +1,436 @@
+.doctor-card .grid {
+  margin-bottom: 0;
+}
+
+.doctor-card .grid__item {
+  position: relative;
+}
+
+@media screen and (min-width: 750px) {
+  .doctor-card__grid--reverse {
+    flex-direction: row-reverse;
+  }
+}
+
+.doctor-card__media {
+  min-height: 100%;
+  overflow: visible;
+}
+
+.doctor-card__media--small {
+  height: 19.4rem;
+}
+
+.doctor-card__media--medium {
+  height: 29.6rem;
+}
+
+.doctor-card__media--large {
+  height: 43.5rem;
+}
+
+@media screen and (min-width: 750px) {
+  .doctor-card__media--small {
+    height: 31.4rem;
+  }
+
+  .doctor-card__media--medium {
+    height: 46rem;
+  }
+
+  .doctor-card__media--large {
+    height: 69.5rem;
+  }
+}
+
+.doctor-card__media--placeholder {
+  position: relative;
+  overflow: hidden;
+}
+
+.doctor-card__media--placeholder:after {
+  content: '';
+  position: absolute;
+  background: rgba(var(--color-foreground), 0.04);
+}
+
+.doctor-card__media--placeholder.doctor-card__media--adapt {
+  height: 20rem;
+}
+
+@media screen and (min-width: 750px) {
+  .doctor-card__media--placeholder.doctor-card__media--adapt {
+    height: 30rem;
+  }
+}
+
+.doctor-card__media--placeholder > svg {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
+}
+
+.doctor-card__media--placeholder:is(.animate--ambient, .animate--zoom-in) > svg {
+  top: 0;
+  left: 0;
+  transform: translate(0);
+}
+
+.doctor-card__content {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  align-self: center;
+  padding: 4rem calc(2rem / var(--font-body-scale)) 5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.doctor-card__content .badge_image {
+  z-index: 10;
+}
+
+.doctor-card .grid__item::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.doctor-card:not(.doctor-card--overlap) .doctor-card__media-item:after {
+  border-radius: var(--media-radius);
+  box-shadow: var(--media-shadow-horizontal-offset) var(--media-shadow-vertical-offset) var(--media-shadow-blur-radius)
+    rgba(var(--color-shadow), var(--media-shadow-opacity));
+}
+
+.doctor-card:not(.doctor-card--overlap) .doctor-card__text-item:after {
+  border-radius: var(--text-boxes-radius);
+  box-shadow: var(--text-boxes-shadow-horizontal-offset) var(--text-boxes-shadow-vertical-offset)
+    var(--text-boxes-shadow-blur-radius) rgba(var(--color-shadow), var(--text-boxes-shadow-opacity));
+}
+
+.doctor-card .doctor-card__media-item {
+  position: relative;
+}
+
+.doctor-card .doctor-card__media-item .badge_image {
+  position: absolute;
+  z-index: 10;
+  top: 10px;
+  left: 10px;
+}
+
+.doctor-card .doctor-card__media-item > * {
+  border-radius: var(--media-radius);
+  overflow: hidden;
+  box-shadow: var(--media-shadow-horizontal-offset) var(--media-shadow-vertical-offset) var(--media-shadow-blur-radius)
+    rgba(var(--color-shadow), var(--media-shadow-opacity));
+}
+
+.doctor-card .global-media-settings {
+  overflow: hidden !important;
+}
+
+.doctor-card .doctor-card__text-item > * {
+  border-radius: var(--text-boxes-radius);
+  overflow: hidden;
+  box-shadow: var(--text-boxes-shadow-horizontal-offset) var(--text-boxes-shadow-vertical-offset)
+    var(--text-boxes-shadow-blur-radius) rgba(var(--color-shadow), var(--text-boxes-shadow-opacity));
+}
+
+.doctor-card:not(.doctor-card--overlap) .doctor-card__media-item > *,
+.doctor-card:not(.doctor-card--overlap) .doctor-card__text-item > * {
+  box-shadow: none;
+}
+
+@media screen and (max-width: 749px) {
+  .doctor-card.collapse-corners:not(.doctor-card--overlap) .doctor-card__media-item:after,
+  .doctor-card.collapse-corners:not(.doctor-card--overlap) .grid__item .doctor-card__media,
+  .doctor-card.collapse-corners:not(.doctor-card--overlap) .doctor-card__media img,
+  .doctor-card.collapse-corners:not(.doctor-card--overlap) .doctor-card__media .placeholder-svg {
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  .doctor-card.collapse-corners:not(.doctor-card--overlap) .doctor-card__text-item:after,
+  .doctor-card.collapse-corners:not(.doctor-card--overlap) .grid__item .doctor-card__content {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+
+  .doctor-card.collapse-borders:not(.doctor-card--overlap) .doctor-card__content {
+    border-top: 0;
+  }
+}
+
+.doctor-card__content--mobile-right > * {
+  align-self: flex-end;
+  text-align: right;
+}
+
+.doctor-card__content--mobile-center > * {
+  align-self: center;
+  text-align: center;
+}
+
+.doctor-card--overlap .doctor-card__content {
+  width: 90%;
+  margin: -3rem auto 0;
+}
+
+@media screen and (min-width: 750px) {
+  .doctor-card__grid--reverse .doctor-card__content {
+    margin-left: auto;
+  }
+
+  .doctor-card__content--bottom {
+    justify-content: flex-end;
+    align-self: flex-end;
+  }
+
+  .doctor-card__content--top {
+    justify-content: flex-start;
+    align-self: flex-start;
+  }
+
+  .doctor-card__content--desktop-right > * {
+    align-self: flex-end;
+    text-align: right;
+  }
+
+  .doctor-card__content--desktop-left > * {
+    align-self: flex-start;
+    text-align: left;
+  }
+
+  .doctor-card__content--desktop-center > * {
+    align-self: center;
+    text-align: center;
+  }
+
+  .doctor-card--overlap .doctor-card__text-item {
+    display: flex;
+    padding: 3rem 0;
+  }
+
+  .doctor-card--overlap .doctor-card__content {
+    height: auto;
+    width: calc(100% + 4rem);
+    min-width: calc(100% + 4rem);
+    margin-top: 0;
+    margin-left: -4rem;
+  }
+
+  .doctor-card--overlap .doctor-card__grid--reverse .doctor-card__content {
+    margin-left: 0;
+    margin-right: -4rem;
+  }
+
+  .doctor-card--overlap .doctor-card__grid--reverse .doctor-card__text-item {
+    justify-content: flex-end;
+  }
+
+  .doctor-card--overlap .doctor-card__media-item--top {
+    align-self: flex-start;
+  }
+
+  .doctor-card--overlap .doctor-card__media-item--middle {
+    align-self: center;
+  }
+
+  .doctor-card--overlap .doctor-card__media-item--bottom {
+    align-self: flex-end;
+  }
+
+  .doctor-card__media-item--small,
+  .doctor-card__media-item--large + .doctor-card__text-item {
+    flex-grow: 0;
+  }
+
+  .doctor-card.collapse-corners:not(.doctor-card--overlap)
+    .grid:not(.doctor-card__grid--reverse)
+    .doctor-card__media-item:after,
+  .doctor-card.collapse-corners:not(.doctor-card--overlap)
+    .grid:not(.doctor-card__grid--reverse)
+    .doctor-card__media,
+  .doctor-card.collapse-corners:not(.doctor-card--overlap)
+    .grid:not(.doctor-card__grid--reverse)
+    .doctor-card__media
+    img,
+  .doctor-card.collapse-corners:not(.doctor-card--overlap)
+    .grid:not(.doctor-card__grid--reverse)
+    .doctor-card__media
+    .placeholder-svg,
+  .doctor-card.collapse-corners:not(.doctor-card--overlap)
+    .doctor-card__grid--reverse
+    .doctor-card__text-item:after,
+  .doctor-card.collapse-corners:not(.doctor-card--overlap)
+    .doctor-card__grid--reverse
+    .doctor-card__content,
+  .doctor-card.collapse-corners:not(.doctor-card--overlap)
+    .doctor-card__grid--reverse
+    .doctor-card__content:after {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .doctor-card.collapse-corners:not(.doctor-card--overlap)
+    .grid:not(.doctor-card__grid--reverse)
+    .doctor-card__text-item:after,
+  .doctor-card.collapse-corners:not(.doctor-card--overlap)
+    .grid:not(.doctor-card__grid--reverse)
+    .doctor-card__content,
+  .doctor-card.collapse-corners:not(.doctor-card--overlap)
+    .grid:not(.doctor-card__grid--reverse)
+    .doctor-card__content:after,
+  .doctor-card.collapse-corners:not(.doctor-card--overlap)
+    .doctor-card__grid--reverse
+    .doctor-card__media-item:after,
+  .doctor-card.collapse-corners:not(.doctor-card--overlap)
+    .doctor-card__grid--reverse
+    .doctor-card__media,
+  .doctor-card.collapse-corners:not(.doctor-card--overlap)
+    .doctor-card__grid--reverse
+    .doctor-card__media
+    img,
+  .doctor-card.collapse-corners:not(.doctor-card--overlap)
+    .doctor-card__grid--reverse
+    .doctor-card__media
+    .placeholder-svg {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  .doctor-card.collapse-borders:not(.doctor-card--overlap)
+    .grid:not(.doctor-card__grid--reverse)
+    .doctor-card__content {
+    border-left: 0;
+  }
+
+  .doctor-card.collapse-borders:not(.doctor-card--overlap)
+    .doctor-card__grid--reverse
+    .doctor-card__content {
+    border-right: 0;
+  }
+}
+
+.doctor-card:not(.collapse-corners, .doctor-card--overlap) .doctor-card__media-item {
+  z-index: 2;
+}
+
+/* Needed for gradient continuity with or without animation so that transparent PNG images come up as we would expect */
+.doctor-card.doctor-card--overlap .backround-transparent,
+.doctor-card:not(.doctor-card--overlap) .background-transparent {
+  background: transparent;
+}
+
+/* Needed for gradient continuity with or without animation, the transform scopes the gradient to its container which happens already when animation are turned on */
+.doctor-card .gradient {
+  transform: perspective(0);
+}
+
+.doctor-card__content {
+  border-radius: var(--text-boxes-radius);
+  box-shadow: var(--text-boxes-shadow-horizontal-offset) var(--text-boxes-shadow-vertical-offset)
+    var(--text-boxes-shadow-blur-radius) rgba(var(--color-shadow), var(--text-boxes-shadow-opacity));
+  word-break: break-word;
+}
+
+@media screen and (min-width: 990px) {
+  .doctor-card__content {
+    padding: 6rem 7rem 7rem;
+  }
+}
+
+.doctor-card__content > * + * {
+  margin-top: 2rem;
+}
+
+.doctor-card__content > .doctor-card__text:empty ~ a {
+  margin-top: 2rem;
+}
+
+.doctor-card__content > :first-child:is(.doctor-card__heading),
+.doctor-card__text--caption:first-child {
+  margin-top: 0;
+}
+
+.doctor-card__text--caption {
+  font-weight: bold;
+}
+
+.doctor-card__content :last-child:is(.doctor-card__heading),
+.doctor-card__text--caption {
+  margin-bottom: 0;
+}
+
+.doctor-card__content .button + .doctor-card__text {
+  margin-top: 2rem;
+}
+
+.doctor-card__content .doctor-card__text + .button {
+  margin-top: 3rem;
+}
+
+.doctor-card__heading {
+  margin-bottom: 0;
+  font-weight: bold;
+}
+
+.doctor-card__text p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+@media screen and (max-width: 749px) {
+  .collapse-padding .doctor-card__grid .doctor-card__content {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+@media screen and (min-width: 750px) {
+  .collapse-padding
+    .doctor-card__grid:not(.doctor-card__grid--reverse)
+    .doctor-card__content:not(.doctor-card__content--desktop-center) {
+    padding-right: 0;
+  }
+
+  .collapse-padding
+    .doctor-card__grid--reverse
+    .doctor-card__content:not(.doctor-card__content--desktop-center) {
+    padding-left: 0;
+  }
+}
+
+/* check for flexbox gap in older Safari versions */
+@supports not (inset: 10px) {
+  .doctor-card .grid {
+    margin-left: 0;
+  }
+}
+
+/*
+  Multirow
+  note: consider removing from this stylesheet if multirow-specific styles increase signficantly
+*/
+.multirow__inner {
+  display: flex;
+  flex-direction: column;
+  row-gap: var(--grid-mobile-vertical-spacing);
+}
+
+@media screen and (min-width: 750px) {
+  .multirow__inner {
+    row-gap: var(--grid-desktop-vertical-spacing);
+  }
+}
