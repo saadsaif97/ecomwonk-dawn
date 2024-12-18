@@ -108,13 +108,6 @@
                 <span class="icon-wrap">&nbsp;{% render 'icon-arrow' %}</span>
               </p>
             {%- endif -%}
-            
-            
-            
-            {%- assign family_collection_handle = product.metafields.custom.family_collection | handleize | prepend: 'collection-'  -%}
-            {%- assign family_collection = collections[family_collection_handle] -%}
-            
-            
           </div>
         </div>
       {%- endif -%}

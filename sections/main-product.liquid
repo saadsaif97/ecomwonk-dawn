@@ -455,17 +455,19 @@
                 {%- assign family_collection_handle = product.metafields.custom.family_collection | handleize | prepend: 'collection-'  -%}
                 {%- assign family_collection = collections[family_collection_handle] -%}
                 
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); gap: 10px;">
-                  {%- for fc_product in family_collection.products -%}
-                    {%- assign selected = false -%}
-                    {%- if fc_product.handle == product.handle -%}
-                      {%- assign selected = true -%}
-                    {%- endif -%}
-                    <a href="{{ fc_product.url }}" style="display: flex; align-items: center; {% if selected %} border: 2px solid; {% endif %}">
-                      <img style="width: 100%;" src="{{ fc_product.featured_image | image_url: width: 80  }}" alt="{{ fc_product.title }}">
-                    </a>
-                  {%- endfor -%}
-                </div>
+                {%- if family_collection != blank and family_collection.products_count > 1 -%}
+                  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); gap: 10px;">
+                    {%- for fc_product in family_collection.products -%}
+                      {%- assign selected = false -%}
+                      {%- if fc_product.handle == product.handle -%}
+                        {%- assign selected = true -%}
+                      {%- endif -%}
+                      <a href="{{ fc_product.url }}" style="display: flex; align-items: center; {% if selected %} border: 2px solid; {% endif %}">
+                        <img style="width: 100%;" src="{{ fc_product.featured_image | image_url: width: 80  }}" alt="{{ fc_product.title }}">
+                      </a>
+                    {%- endfor -%}
+                  </div>
+                {%- endif -%}
                           
                 {% render 'product-variant-picker', product: product, block: block, product_form_id: product_form_id %}
               {%- when 'buy_buttons' -%}
