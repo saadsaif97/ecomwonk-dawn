@@ -449,6 +449,67 @@
                   assign share_url = product.selected_variant.url | default: product.url | prepend: request.origin
                   render 'share-button', block: block, share_link: share_url
                 %}
+              {%- when 'product_variations' -%}
+                {%- assign contains_product = false -%}
+        
+                {%- for product_variation in block.settings.products -%}
+                  {%- if product_variation == product -%}
+                    {%- assign contains_product = true -%}
+                  {%- endif -%}
+                {%- endfor -%}
+        
+                {%- if contains_product -%}
+                  {%- comment -%}
+                    IMPLEMENTATION NOTE: this feature allows to connect different products on the same page. It is therefore
+                    visually similar to a variant picker, although it does not share the functionality
+                  {%- endcomment -%}
+        
+                  <div class="product-info__product-picker" {{ block.shopify_attributes }}>
+                    <div class="variant-picker">
+                      <fieldset class="variant-picker__option">
+                        {%- assign metafield_parts = block.settings.option_value_metafield | split: '.' -%}
+                        {%- assign metafield_namespace = metafield_parts | first -%}
+                        {%- assign metafield_key = metafield_parts | last -%}
+        
+                        {%- if block.settings.option_name != blank -%}
+                          <div class="variant-picker__option-info">
+                            <div class="h-stack gap-2">
+                              <legend class="text-subdued">{{ block.settings.option_name | escape }}:</legend>
+                              <span>{{ product.metafields[metafield_namespace][metafield_key].value | escape }}</span>
+                            </div>
+                          </div>
+                        {%- endif -%}
+        
+                        <div class="variant-picker__option-values wrap gap-2">
+                          {%- for product_variation in block.settings.products -%}
+                            {%- assign value = product_variation.metafields[metafield_namespace][metafield_key].value -%}
+        
+                            {%- if product_variation == product -%}
+                              {%- assign selected = true -%}
+                            {%- else -%}
+                              {%- assign selected = false -%}
+                            {%- endif -%}
+        
+                            {%- case block.settings.color_mode -%}
+                              {%- when 'color' -%}
+                                {%- render 'impact-swatch' with 'color', href: product_variation.url, value: value, selected: selected -%}
+        
+                              {%- when 'variant' -%}
+                                {%- render 'impact-swatch' with 'media', href: product_variation.url, value: value, media: product_variation.featured_media, selected: selected, bordered: true -%}
+        
+                              {%- when 'block' -%}
+                                {%- render 'impact-swatch' with 'block', href: product_variation.url, value: value, selected: selected -%}
+        
+                              {%- when 'block_swatch' -%}
+                                {%- render 'impact-swatch' with 'block', href: product_variation.url, value: value, selected: selected, show_color: true -%}
+                            {%- endcase -%}
+                          {%- endfor -%}
+                        </div>
+                      </fieldset>
+                    </div>
+                  </div>
+                {%- endif -%}
+          
 
               {%- when 'variant_picker' -%}
 
@@ -955,6 +1016,60 @@
       "type": "description",
       "name": "t:sections.main-product.blocks.description.name",
       "limit": 1
+    },
+    {
+      "type": "product_variations",
+      "name": "Product variations",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "Link products of different colors using swatches. [Learn more](https://support.maestrooo.com/article/307-product-creating-product-variations-that-link-to-different-pages)"
+        },
+        {
+          "type": "text",
+          "id": "option_name",
+          "label": "Option name",
+          "info": "Example: Color, Style..."
+        },
+        {
+          "type": "text",
+          "id": "option_value_metafield",
+          "label": "Option value metafield",
+          "info": "Enter namespace and key of the metafield holding the value. Eg.: custom.color"
+        },
+        {
+          "type": "product_list",
+          "id": "products",
+          "label": "Products",
+          "info": "Select all the variations (including the product itself)."
+        },
+        {
+          "type": "select",
+          "id": "color_mode",
+          "label": "Selector type",
+          "info": "Product image mode requires that all variant have an associated image. [Learn more](https://help.shopify.com/en/manual/products/product-media/add-images-variants#add-images-to-existing-variants)",
+          "options": [
+            {
+              "value": "block",
+              "label": "Block"
+            },
+            {
+              "value": "block_swatch",
+              "label": "Block with color swatch"
+            },
+            {
+              "value": "color",
+              "label": "Color swatch"
+            },
+            {
+              "value": "variant",
+              "label": "Product image"
+            }
+          ],
+          "default": "color"
+        }
+      ]
     },
     {
       "type": "share",
