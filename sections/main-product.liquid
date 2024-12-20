@@ -470,7 +470,7 @@
                         {%- assign metafield_parts = block.settings.option_value_metafield | split: '.' -%}
                         {%- assign metafield_namespace = metafield_parts | first -%}
                         {%- assign metafield_key = metafield_parts | last -%}
-        
+
                         {%- if block.settings.option_name != blank -%}
                           <div class="variant-picker__option-info">
                             <div class="h-stack gap-2">
@@ -479,30 +479,19 @@
                             </div>
                           </div>
                         {%- endif -%}
-        
-                        <div class="variant-picker__option-values wrap gap-2">
+                        
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); gap: 10px;">
                           {%- for product_variation in block.settings.products -%}
                             {%- assign value = product_variation.metafields[metafield_namespace][metafield_key].value -%}
-        
                             {%- if product_variation == product -%}
                               {%- assign selected = true -%}
                             {%- else -%}
                               {%- assign selected = false -%}
                             {%- endif -%}
-        
-                            {%- case block.settings.color_mode -%}
-                              {%- when 'color' -%}
-                                {%- render 'impact-swatch' with 'color', href: product_variation.url, value: value, selected: selected -%}
-        
-                              {%- when 'variant' -%}
-                                {%- render 'impact-swatch' with 'media', href: product_variation.url, value: value, media: product_variation.featured_media, selected: selected, bordered: true -%}
-        
-                              {%- when 'block' -%}
-                                {%- render 'impact-swatch' with 'block', href: product_variation.url, value: value, selected: selected -%}
-        
-                              {%- when 'block_swatch' -%}
-                                {%- render 'impact-swatch' with 'block', href: product_variation.url, value: value, selected: selected, show_color: true -%}
-                            {%- endcase -%}
+                            
+                            <a href="{{ product_variation.url }}" style="display: flex; align-items: center; {% if selected %} border: 2px solid; {% endif %}">
+                              <img style="width: 100%;" src="{{ product_variation.featured_image | image_url: width: 80  }}" alt="{{ product_variation.title }}">
+                            </a>
                           {%- endfor -%}
                         </div>
                       </fieldset>
