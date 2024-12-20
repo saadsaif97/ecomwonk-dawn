@@ -512,21 +512,6 @@
           
 
               {%- when 'variant_picker' -%}
-
-                <h3>Select the wood:</h3>
-                {%- assign oak = false -%}
-                {%- assign pine = false -%}
-                {%- if product.handle == "relief-oak-individuell" -%}
-                    {%- assign oak = true -%}
-                  {%- elsif product.handle == "relief-pine-individuell" -%}
-                    {%- assign pine = true -%}
-                {%- endif -%}
-                            
-                <div style="display: flex;width: 100%;justify-content: space-between; border-radius: 50px; overflow: hidden; border: 2px solid black;">
-                  <a class="button {%- unless oak %} button--tertiary {%- endunless -%}" style="width: 100%; border-radius: 0;" href="https://ecomwonk.myshopify.com/products/relief-oak-individuell">Oak</a>
-                  <a class="button {%- unless pine %} button--tertiary {%- endunless -%}" style="width: 100%; border-radius: 0;" href="https://ecomwonk.myshopify.com/products/relief-pine-individuell">Pine</a>
-                </div>
-                          
                 {% render 'product-variant-picker', product: product, block: block, product_form_id: product_form_id %}
               {%- when 'buy_buttons' -%}
                 {%- render 'buy-buttons',
