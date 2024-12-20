@@ -34,6 +34,15 @@
             "swatch_shape": "circle"
           }
         },
+        "product_variations_XJJPwX": {
+          "type": "product_variations",
+          "settings": {
+            "option_name": "Color",
+            "option_value_metafield": "{{ product.metafields.custom.variation_value.value }}",
+            "products": "{{ product.metafields.custom.variation_products.value }}",
+            "color_mode": "variant"
+          }
+        },
         "quantity_selector": {
           "type": "quantity_selector",
           "settings": {}
@@ -61,6 +70,7 @@
         "title",
         "price",
         "variant_picker",
+        "product_variations_XJJPwX",
         "quantity_selector",
         "buy_buttons",
         "description",
