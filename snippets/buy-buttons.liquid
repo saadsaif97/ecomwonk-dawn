@@ -65,10 +65,10 @@
           {%- render 'gift-card-recipient-form', product: product, form: form, section: section -%}
         {%- endif -%}
 
-        <p class="line-item-property__field">
+        {% comment %} <p class="line-item-property__field">
           <label for="custom_image">Image (JPG or PNG)</label>
           <input required id="custom_image" type="file" name="properties[Custom Image]">
-        </p>
+        </p> {% endcomment %}
 
         <div class="product-form__buttons">
           {%- liquid
