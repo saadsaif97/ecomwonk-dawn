@@ -501,6 +501,20 @@
           
 
               {%- when 'variant_picker' -%}
+
+                {%- assign first_variant = product.variants | first -%}{%- assign sku = first_variant.sku | split: '' -%}{%- assign initial_sku = '' -%}{%- for n in sku -%}{%- assign initial_sku = initial_sku | append: n -%}{%- if forloop.index == 8 -%}{% break %}{%- endif -%}{%- endfor -%}
+                {%- assign family_handles = shop.metafields.family_collection[initial_sku] | split: ',' -%}
+                
+                <div style="background-color: #e9e9e9; padding: 20px; border-radius: 20px;">
+                  <h3>Family Products:</h3>
+                  {%- for family_handle in family_handles -%}
+                    {%- assign family_product = all_products[family_handle] -%}
+                    <a href="{{ family_product.url }}">
+                      {{ family_product.title }}
+                    </a>
+                  {%- endfor -%}
+                </div>
+                            
                 {%- assign family_collection_handle = product.metafields.custom.family_collection | handleize | prepend: 'collection-'  -%}
                 {%- assign family_collection = collections[family_collection_handle] -%}
                 
