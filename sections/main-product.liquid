@@ -509,7 +509,7 @@
                   <h3>Family Products:</h3>
                   {%- for family_handle in family_handles -%}
                     {%- assign family_product = all_products[family_handle] -%}
-                    <a href="{{ family_product.url }}">
+                    <a class="link" href="{{ family_product.url }}">
                       {{ family_product.title }}
                     </a> <br/>
                   {%- endfor -%}
