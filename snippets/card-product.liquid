@@ -630,27 +630,30 @@
   {%- assign family_handles = shop.metafields.family_collection[initial_sku] | split: ',' -%}
 
   {%- if family_handles.size > 1 -%}
-    <label class="form_label">Color:</label>
-    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-      {%- for family_handle in family_handles -%}
-        {%- assign selected = false -%}
-        {%- if family_handle == card_product.handle -%}
-          {%- assign selected = true -%}
-        {%- endif -%}
-        {%- assign family_product = all_products[family_handle] -%}
-        <a
-          data-product-card="{{ card_product.id }}"
-          data-fake-variant
-          href="{{ family_product.url }}?section_id=fake-variant-product"
-          style="display: flex; align-items: center; {% if selected %} box-shadow: 0 0 2px rgba(0,0,0,0.6); border: 2px solid; {% endif %}"
-        >
-          <img
-            style="width: 100%;"
-            src="{{ family_product.featured_image | image_url: width: 80  }}"
-            alt="{{ family_product.title }}"
+    <div class="fake-variant-selector">
+      <label class="form_label">Color:</label>
+      <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+        {%- for family_handle in family_handles -%}
+          {%- assign selected = false -%}
+          {%- if family_handle == card_product.handle -%}
+            {%- assign selected = true -%}
+          {%- endif -%}
+          {%- assign family_product = all_products[family_handle] -%}
+          <a
+            data-product-card="{{ card_product.id }}"
+            data-fake-variant="{{ family_product.handle }}"
+            href="{{ family_product.url }}?section_id=fake-variant-product"
+            {% if selected %} class="selected" {% endif %}
+            style="display: flex; align-items: center;"
           >
-        </a>
-      {%- endfor -%}
+            <img
+              style="width: 100%;"
+              src="{{ family_product.featured_image | image_url: width: 80  }}"
+              alt="{{ family_product.title }}"
+            >
+          </a>
+        {%- endfor -%}
+      </div>
     </div>
   {%- endif -%}
 </div>

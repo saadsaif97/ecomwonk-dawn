@@ -406,6 +406,16 @@
           
           targetCard.innerHTML = card
           
+          const selected = targetCard.querySelector("[data-selected-variant]").getAttribute("data-selected-variant");
+          
+          const selector = document.querySelector(`.product-card-wrapper[data-product-card='${productId}'] + .fake-variant-selector`);
+          console.log({selected}, selector);
+          selector.querySelectorAll("[data-fake-variant]").forEach(select => {
+            select.classList.remove("selected");
+          });
+          
+          selector.querySelector(`[data-fake-variant='${selected}']`).classList.add("selected")
+          
         } catch (error) {
           console.error('Error fetching and parsing the URL:', error);
         }

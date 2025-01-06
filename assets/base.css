@@ -3454,3 +3454,7 @@ details-disclosure > details {
     --border-offset: 0px; /* Prevent the border from growing on buttons when this effect is on. */
   }
 }
+
+.fake-variant-selector .selected {
+  box-shadow: 0 0 2px rgba(0,0,0,0.6); border: 2px solid;
+}
