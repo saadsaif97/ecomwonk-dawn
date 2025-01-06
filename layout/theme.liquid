@@ -385,24 +385,26 @@
           // Create a temporary DOM to parse the HTML
           const parser = new DOMParser();
           const doc = parser.parseFromString(htmlText, 'text/html');
-          const card = doc.querySelector("#shopify-section-fake-variant-product");
+          const card = doc.querySelector("#shopify-section-fake-variant-product").innerHTML;
           
-          const title = card.querySelector(".title").innerHTML
-          const image = card.querySelector(".image").innerHTML
-          const price = card.querySelector(".price").innerHTML
+          // const title = card.querySelector(".title").innerHTML
+          // const image = card.querySelector(".image").innerHTML
+          // const price = card.querySelector(".price").innerHTML
           
           const targetCard = document.querySelector(`.product-card-wrapper[data-product-card='${productId}']`);
           
           console.log({productId});
-          console.log(title);
-          console.log(image);
-          console.log(price);
+          // console.log(title);
+          // console.log(image);
+          // console.log(price);
           
-          targetCard.querySelector(".media").innerHTML = image;
-          targetCard.querySelectorAll(".card__heading").forEach(heading => {
-            heading.innerHTML = title;
-          })
-          targetCard.querySelector(".card_price").innerHTML = price;
+          // targetCard.querySelector(".media").innerHTML = image;
+          // targetCard.querySelectorAll(".card__heading").forEach(heading => {
+          //   heading.innerHTML = title;
+          // })
+          // targetCard.querySelector(".card_price").innerHTML = price;
+          
+          targetCard.innerHTML = card
           
         } catch (error) {
           console.error('Error fetching and parsing the URL:', error);
