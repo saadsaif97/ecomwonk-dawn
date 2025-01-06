@@ -39,7 +39,7 @@
       assign ratio = 1
     endif
   -%}
-  <div class="card-wrapper product-card-wrapper underline-links-hover">
+  <div data-product-card="{{ card_product.id }}" class="card-wrapper product-card-wrapper underline-links-hover">
     <div
       class="
         card card--{{ settings.card_style }}
@@ -203,7 +203,9 @@
               </p>
             {%- endif -%}
 
-            {% render 'price', product: card_product, price_class: '', show_compare_at_price: true %}
+            <div class="card_price">
+              {% render 'price', product: card_product, price_class: '', show_compare_at_price: true %}
+            </div>
             {%- if card_product.quantity_price_breaks_configured? -%}
               {% if card_product.variants.size == 1 and quick_add == 'bulk' %}
                 {% liquid
@@ -299,7 +301,7 @@
                   {%- assign selected = true -%}
                 {%- endif -%}
                 {%- assign family_product = all_products[family_handle] -%}
-                <a data-fake-variant href="{{ family_product.url }}" style="display: flex; align-items: center; {% if selected %} box-shadow: 0 0 2px rgba(0,0,0,0.6); border: 2px solid; {% endif %}">
+                <a data-product-card="{{ card_product.id }}" data-fake-variant href="{{ family_product.url }}?section_id=fake-variant-product" style="display: flex; align-items: center; {% if selected %} box-shadow: 0 0 2px rgba(0,0,0,0.6); border: 2px solid; {% endif %}">
                   <img style="width: 100%;" src="{{ family_product.featured_image | image_url: width: 80  }}" alt="{{ family_product.title }}">
                 </a>
               {%- endfor -%}

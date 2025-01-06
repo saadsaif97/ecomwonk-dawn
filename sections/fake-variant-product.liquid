@@ -1,0 +1,37 @@
+<div class="image">
+  <img
+    srcset="
+      {%- if product.featured_media.width >= 165 -%}{{ product.featured_media | image_url: width: 165 }} 165w,{%- endif -%}
+      {%- if product.featured_media.width >= 360 -%}{{ product.featured_media | image_url: width: 360 }} 360w,{%- endif -%}
+      {%- if product.featured_media.width >= 533 -%}{{ product.featured_media | image_url: width: 533 }} 533w,{%- endif -%}
+      {%- if product.featured_media.width >= 720 -%}{{ product.featured_media | image_url: width: 720 }} 720w,{%- endif -%}
+      {%- if product.featured_media.width >= 940 -%}{{ product.featured_media | image_url: width: 940 }} 940w,{%- endif -%}
+      {%- if product.featured_media.width >= 1066 -%}{{ product.featured_media | image_url: width: 1066 }} 1066w,{%- endif -%}
+      {{ product.featured_media | image_url }} {{ product.featured_media.width }}w
+    "
+    src="{{ product.featured_media | image_url: width: 533 }}"
+    sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 130 | divided_by: 4 }}px, (min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
+    alt="{{ product.featured_media.alt | escape }}"
+    class="motion-reduce"
+    {% unless lazy_load == false %}
+      loading="lazy"
+    {% endunless %}
+    width="{{ product.featured_media.width }}"
+    height="{{ product.featured_media.height }}"
+  >
+</div>
+
+<div class="title">
+  <a
+    href="{{ product.url }}"
+    id="CardLink-{{ section_id }}-{{ product.id }}"
+    class="full-unstyled-link"
+    aria-labelledby="CardLink-{{ section_id }}-{{ product.id }} Badge-{{ section_id }}-{{ product.id }}"
+  >
+    {{ product.title | escape }}
+  </a>
+</div>
+
+<div class="price">
+  {% render 'price', product: product, price_class: '', show_compare_at_price: true %}
+</div>
