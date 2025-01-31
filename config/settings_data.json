@@ -142,13 +142,8 @@
     },
     "content_for_index": [],
     "blocks": {
-      "7280966411886983154": {
-        "type": "shopify://apps/monk/blocks/app-embed/e949adb6-87ca-4b97-8f31-0e51bf507f2d",
-        "disabled": false,
-        "settings": {}
-      },
-      "11724500921838622758": {
-        "type": "shopify://apps/frequently-bought/blocks/app-embed-block/b1a8cbea-c844-4842-9529-7c62dbab1b1f",
+      "13180643132867056963": {
+        "type": "shopify://apps/gdpr-legal-cookie/blocks/bc-block/e49729f0-d37d-4e24-ac65-e0e2f472ac27",
         "disabled": false,
         "settings": {}
       }
