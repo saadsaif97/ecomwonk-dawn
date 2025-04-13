@@ -58,6 +58,13 @@
             "show_gift_card_recipient": true
           }
         },
+        "pumper_bundles_quantity_breaks_app_block_bundle_iW8VKK": {
+          "type": "shopify://apps/pumper-bundles-quantity-breaks/blocks/app-block-bundle/0856870d-2aca-4b1e-a662-cf1797f61270",
+          "settings": {
+            "selected_product": "{{product}}",
+            "using_page_builder": false
+          }
+        },
         "description": {
           "type": "description",
           "settings": {}
@@ -78,6 +85,7 @@
         "product_variations_XJJPwX",
         "quantity_selector",
         "buy_buttons",
+        "pumper_bundles_quantity_breaks_app_block_bundle_iW8VKK",
         "description",
         "share"
       ],
