@@ -306,7 +306,7 @@
         "product": "Product",
         "price": "Price",
         "total": "Total",
-        "quantity": "Quantity",
+        "quantity": "",
         "image": "Product image"
       },
       "update": "Update",
