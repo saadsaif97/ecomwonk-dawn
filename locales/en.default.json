@@ -537,19 +537,12 @@
         },
         "component_quantity_title": " ",
         "quantity_label": " ",
-        "product_image_quantity_label": " ",
-        "discount_discovery": {
-          "merchandise_quantity_label": {
-            "one": " ",
-            "other": " "
-          }
-        }
+        "product_image_quantity_label": " "
       },
       "stock": {
         "item_label": {
           "other": "stockssss"
-        },
-        "quantity_column_header": "Quantityyyyy"
+        }
       }
     }
   }
