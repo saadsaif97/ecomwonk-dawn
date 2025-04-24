@@ -527,5 +527,15 @@
       "send_on": "YYYY-MM-DD",
       "send_on_label": "Send on (optional)"
     }
+  },
+  "shopify": {
+    "checkout": {
+      "order_summary": {
+        "subtotal_label_with_quantity": {
+          "one": "Subtotal",
+          "other": "Subtotal"
+        }
+      }
+    }
   }
 }
