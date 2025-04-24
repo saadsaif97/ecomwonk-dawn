@@ -538,7 +538,8 @@
         "number_items": {
           "one": "<strong style=\"text-transform:uppercase\">{{ count }}</strong> here.",
           "other": "<strong style=\"text-transform:uppercase\">{{ count }}</strong> here."
-        }
+        },
+        "component_quantity_title": "<strong style=\"text-transform:uppercase\">{{ count }}</strong> here."
       },
       "stock": {
         "item_label": {
