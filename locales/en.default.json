@@ -534,7 +534,9 @@
         "subtotal_label_with_quantity": {
           "one": "Subtotal",
           "other": "Subtotal"
-        }
+        },
+        "component_quantity_title": "q X t",
+        "product_image_quantity_label": "image"
       },
       "stock": {
         "item_label": {
