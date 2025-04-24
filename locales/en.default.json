@@ -539,7 +539,8 @@
       "stock": {
         "item_label": {
           "other": "stockssss"
-        }
+        },
+        "quantity_column_header": "Quantityyyyy"
       }
     }
   }
