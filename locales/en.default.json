@@ -535,6 +535,11 @@
           "one": "Subtotal",
           "other": "Subtotal"
         }
+      },
+      "stock": {
+        "item_label": {
+          "other": "stockssss"
+        }
       }
     }
   }
