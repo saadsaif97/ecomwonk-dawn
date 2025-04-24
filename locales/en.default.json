@@ -534,6 +534,10 @@
         "subtotal_label_with_quantity": {
           "one": "Subtotal",
           "other": "Subtotal"
+        },
+        "number_items": {
+          "one": "<strong style=\"text-transform:uppercase\">{{ count }}</strong> here.",
+          "other": "<strong style=\"text-transform:uppercase\">{{ count }}</strong> here."
         }
       },
       "stock": {
