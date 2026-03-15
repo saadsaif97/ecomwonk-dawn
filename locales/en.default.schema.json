@@ -352,6 +352,19 @@
             "label": "Collection",
             "info": "Visible when cart drawer is empty."
           }
+        },
+        "free_shipping_bar": {
+          "header": "Free shipping bar"
+        },
+        "show_free_shipping_bar": {
+          "label": "Show free shipping progress bar"
+        },
+        "free_shipping_threshold": {
+          "label": "Free shipping threshold ($)"
+        },
+        "free_gift_threshold": {
+          "label": "Free gift threshold ($)",
+          "info": "Set to 0 to hide the free gift milestone on the progress bar"
         }
       }
     },
