@@ -272,8 +272,9 @@
                             assign has_vol_pricing = true
                           endif
                         -%}
+                        {%- assign free_gift_handle = settings.free_gift_item | default: 'beanie-chocolate-free-gift' -%}
                         <td
-                          class="cart-item__quantity {% if has_qty_rules or has_vol_pricing %} cart-item__quantity--info{% endif %}"
+                          class="cart-item__quantity {% if item.product.handle == free_gift_handle %} free_gift_item {% endif %}{% if has_qty_rules or has_vol_pricing %} cart-item__quantity--info{% endif %}"
                           role="cell"
                           headers="CartDrawer-ColumnQuantity"
                         >
