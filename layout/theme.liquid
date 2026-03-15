@@ -283,6 +283,86 @@
         document.documentElement.classList.add('shopify-design-mode');
       }
     </script>
+    {%- if settings.free_gift_threshold > 0 -%}
+  <script defer="defer" data-free-gift>
+    {%- assign free_gift_item = settings.free_gift_item | default: 'beanie-chocolate-free-gift' -%}
+    {%- assign free_gift_id = all_products[free_gift_item].selected_or_first_available_variant.id -%}
+    const free_gift_item = "{{ free_gift_item }}";
+    const free_gift_id = "{{ free_gift_id }}";
+    const free_gift_threshold = {{ settings.free_gift_threshold | default: 70 | times: 100 }};
+    
+    document.addEventListener("DOMContentLoaded", async () => {
+      const res = await fetch('/cart.js');
+      const cart = await res.json();
+
+      handleFreegift(cart.total_price, cart.items);
+      
+      subscribe(PUB_SUB_EVENTS.cartUpdate, async () => {
+        try {
+          const res = await fetch('/cart.js');
+          const cart = await res.json();
+
+          handleFreegift(cart.total_price, cart.items);
+        } catch (error) {
+          console.error("Cart update error:", error);
+        }
+      });
+    });
+    
+    async function handleFreegift(cart_total, cart_items) {
+      try {
+        const giftInCart = cart_items.find(item => item.handle === free_gift_item);
+
+        // THRESHOLD MET → ADD GIFT IF NOT PRESENT
+        if (cart_total >= free_gift_threshold) {
+          if (!giftInCart) {
+            console.log("Adding free gift");
+
+            await fetch('/cart/add.js', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({
+                id: free_gift_id,
+                quantity: 1
+              })
+            });
+
+            document.dispatchEvent(new CustomEvent('cart:refresh'));
+            publish(PUB_SUB_EVENTS.cartUpdate, { source: 'custom' });
+          } else {
+            console.log("Free gift already in cart");
+          }
+        }
+
+        // THRESHOLD NOT MET → REMOVE GIFT IF PRESENT
+        else {
+          if (giftInCart) {
+            console.log("Removing free gift");
+
+            await fetch('/cart/change.js', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({
+                id: giftInCart.key,
+                quantity: 0
+              })
+            });
+
+            document.dispatchEvent(new CustomEvent('cart:refresh'));
+            publish(PUB_SUB_EVENTS.cartUpdate, { source: 'custom' });
+          }
+        }
+        
+      } catch (error) {
+        console.error("Free gift error:", error);
+      }
+    }
+  </script>
+{%- endif -%}
   </head>
 
   <body class="gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}">
