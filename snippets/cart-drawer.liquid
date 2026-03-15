@@ -70,9 +70,6 @@
           {% render 'icon-close' %}
         </button>
       </div>
-      {%- if settings.show_free_shipping_bar and cart != empty -%}
-        {%- render 'cart-rewards-bar' -%}
-      {%- endif -%}
       <cart-drawer-items
         {% if cart == empty %}
           class=" is-empty"
@@ -273,7 +270,7 @@
                           endif
                         -%}
                         <td
-                          class="cart-item__quantity {% if item.product.handle == free_gift_handle %} free_gift_item {% endif %} {% if has_qty_rules or has_vol_pricing %} cart-item__quantity--info{% endif %}"
+                          class="cart-item__quantity {% if has_qty_rules or has_vol_pricing %} cart-item__quantity--info{% endif %}"
                           role="cell"
                           headers="CartDrawer-ColumnQuantity"
                         >
