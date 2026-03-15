@@ -346,6 +346,19 @@
         "show_cart_note": {
           "label": "Enable cart note"
         },
+        "free_shipping_bar": {
+          "header": "Free shipping bar"
+        },
+        "show_free_shipping_bar": {
+          "label": "Show free shipping progress bar"
+        },
+        "free_shipping_threshold": {
+          "label": "Free shipping threshold ($)"
+        },
+        "free_gift_threshold": {
+          "label": "Free gift threshold ($)",
+          "info": "Set to 0 to hide the free gift milestone on the progress bar"
+        },
         "cart_drawer": {
           "header": "Cart drawer",
           "collection": {
