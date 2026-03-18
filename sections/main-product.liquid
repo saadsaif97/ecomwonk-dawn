@@ -842,6 +842,159 @@
       "type": "@app"
     },
     {
+  "type": "buy_more_save_more",
+  "name": "Buy more save more",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading_text",
+      "label": "Heading Text",
+      "default": "Buy more, save more! 💲"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_percentage_saved",
+      "label": "Show percentage saved instead of price saved",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "preselect_deal",
+      "label": "Preselect Deal",
+      "options": [
+        { "value": "deal_1", "label": "Deal 1" },
+        { "value": "deal_2", "label": "Deal 2" },
+        { "value": "deal_3", "label": "Deal 3" }
+      ],
+      "default": "deal_2"
+    },
+    {
+      "type": "header",
+      "content": "Deal 1"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "deal_1_label",
+      "label": "Deal 1 Label",
+      "default": "Buy 2 and <strong>save |saving|</strong>",
+      "info": "|saving| will be replaced by actual saving amount"
+    },
+    {
+      "type": "image_picker",
+      "id": "deal_1_image",
+      "label": "Deal 1 image"
+    },
+    {
+      "type": "number",
+      "id": "deal_1_quantity",
+      "label": "Deal 1 Quantity",
+      "default": 2
+    },
+    {
+      "type": "number",
+      "id": "deal_1_final_price",
+      "label": "Deal 1 Final Price ($)",
+      "default": 24
+    },
+    {
+      "type": "text",
+      "id": "deal_1_badge_text",
+      "label": "Deal 1 Badge Text",
+      "default": "save |saving|",
+      "info": "|saving| will be replaced by actual saving amount"
+    },
+    {
+      "type": "color",
+      "id": "deal_1_badge_color",
+      "label": "Deal 1 Badge Color",
+      "default": "#f97316"
+    },
+
+    {
+      "type": "header",
+      "content": "Deal 2"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "deal_2_label",
+      "label": "Deal 2 Label",
+      "default": "Buy 5 and <strong>save |saving|</strong>",
+      "info": "|saving| will be replaced by actual saving amount"
+    },
+    {
+      "type": "image_picker",
+      "id": "deal_2_image",
+      "label": "Deal 2 image"
+    },
+    {
+      "type": "number",
+      "id": "deal_2_quantity",
+      "label": "Deal 2 Quantity",
+      "default": 5
+    },
+    {
+      "type": "number",
+      "id": "deal_2_final_price",
+      "label": "Deal 2 Final Price ($)",
+      "default": 55
+    },
+    {
+      "type": "text",
+      "id": "deal_2_badge_text",
+      "label": "Deal 2 Badge Text",
+      "default": "save |saving|",
+      "info": "|saving| will be replaced by actual saving amount"
+    },
+    {
+      "type": "color",
+      "id": "deal_2_badge_color",
+      "label": "Deal 2 Badge Color",
+      "default": "#FF7A00"
+    },
+    {
+      "type": "header",
+      "content": "Deal 3"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "deal_3_label",
+      "label": "Deal 3 Label",
+      "default": "Buy 10+ and <strong>save |saving|</strong>",
+      "info": "|saving| will be replaced by actual saving amount"
+    },
+    {
+      "type": "image_picker",
+      "id": "deal_3_image",
+      "label": "Deal 3 image"
+    },
+    {
+      "type": "number",
+      "id": "deal_3_quantity",
+      "label": "Deal 3 Quantity",
+      "default": 10
+    },
+    {
+      "type": "number",
+      "id": "deal_3_final_price",
+      "label": "Deal 3 Final Price ($)",
+      "default": 95
+    },
+    {
+      "type": "text",
+      "id": "deal_3_badge_text",
+      "label": "Deal 3 Badge Text",
+      "default": "save |saving|",
+      "info": "|saving| will be replaced by actual saving amount"
+    },
+    {
+      "type": "color",
+      "id": "deal_3_badge_color",
+      "label": "Deal 3 Badge Color",
+      "default": "#E53935"
+    }
+  ]
+},
+    {
       "type": "text",
       "name": "t:sections.main-product.blocks.text.name",
       "settings": [
