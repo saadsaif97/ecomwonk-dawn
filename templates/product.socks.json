@@ -27,9 +27,31 @@
           "type": "price",
           "settings": {}
         },
-        "judge_me_reviews_preview_badge_AFH8QM": {
-          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-          "settings": {}
+        "buy_more_save_more_A3iFYW": {
+          "type": "buy_more_save_more",
+          "settings": {
+            "heading_text": "",
+            "show_percentage_saved": true,
+            "preselect_deal": "deal_2",
+            "deal_1_label": "Buy 1",
+            "deal_1_image": "shopify://shop_images/1039_Black.png",
+            "deal_1_quantity": 1,
+            "deal_1_final_price": 19,
+            "deal_1_badge_text": "",
+            "deal_1_badge_color": "#f97316",
+            "deal_2_label": "Buy 2",
+            "deal_2_image": "shopify://shop_images/Pack_of_2-removebg-preview.png",
+            "deal_2_quantity": 2,
+            "deal_2_final_price": 34.2,
+            "deal_2_badge_text": "Popular | save |saving|",
+            "deal_2_badge_color": "#ff7a00",
+            "deal_3_label": "Buy 3",
+            "deal_3_image": "shopify://shop_images/Pack_of_3-removebg-preview.png",
+            "deal_3_quantity": 3,
+            "deal_3_final_price": 45.6,
+            "deal_3_badge_text": "Best Value | save |saving|",
+            "deal_3_badge_color": "#e53935"
+          }
         },
         "variant_picker": {
           "type": "variant_picker",
@@ -80,7 +102,7 @@
         "vendor",
         "title",
         "price",
-        "judge_me_reviews_preview_badge_AFH8QM",
+        "buy_more_save_more_A3iFYW",
         "variant_picker",
         "product_variations_XJJPwX",
         "quantity_selector",
