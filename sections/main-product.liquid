@@ -82,6 +82,8 @@
 
           {%- for block in section.blocks -%}
             {%- case block.type -%}
+              {% when 'buy_more_save_more' %}
+                {% render 'buy-more-save-more', section: section, block: block %}
               {%- when '@app' -%}
                 {% render block %}
               {%- when 'text' -%}
