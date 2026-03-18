@@ -27,9 +27,28 @@
           "type": "price",
           "settings": {}
         },
-        "judge_me_reviews_preview_badge_AFH8QM": {
-          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-          "settings": {}
+        "buy_more_save_more_XEtTMY": {
+          "type": "buy_more_save_more",
+          "settings": {
+            "heading_text": "",
+            "show_percentage_saved": true,
+            "preselect_deal": "deal_2",
+            "deal_1_label": "Buy 1",
+            "deal_1_quantity": 1,
+            "deal_1_final_price": 19,
+            "deal_1_badge_text": "",
+            "deal_1_badge_color": "#f97316",
+            "deal_2_label": "Buy 2 and <strong>save |saving|</strong>",
+            "deal_2_quantity": 2,
+            "deal_2_final_price": 34.2,
+            "deal_2_badge_text": "save |saving|",
+            "deal_2_badge_color": "#ff7a00",
+            "deal_3_label": "Buy 10+ and <strong>save |saving|</strong>",
+            "deal_3_quantity": 10,
+            "deal_3_final_price": 95,
+            "deal_3_badge_text": "save |saving|",
+            "deal_3_badge_color": "#e53935"
+          }
         },
         "variant_picker": {
           "type": "variant_picker",
@@ -80,7 +99,7 @@
         "vendor",
         "title",
         "price",
-        "judge_me_reviews_preview_badge_AFH8QM",
+        "buy_more_save_more_XEtTMY",
         "variant_picker",
         "product_variations_XJJPwX",
         "quantity_selector",
@@ -92,7 +111,7 @@
       "settings": {
         "enable_sticky_info": true,
         "color_scheme": "scheme-1",
-        "media_size": "large",
+        "media_size": "small",
         "constrain_to_viewport": true,
         "media_fit": "contain",
         "gallery_layout": "stacked",
@@ -128,7 +147,12 @@
       "blocks": {
         "judge_me_reviews_review_widget_qXtA3L": {
           "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-          "settings": {}
+          "settings": {
+            "review_data": "sample_data",
+            "max_width": 1200,
+            "show_shop_reviews": false,
+            "empty_state": "empty_widget"
+          }
         }
       },
       "block_order": [
