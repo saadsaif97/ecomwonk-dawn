@@ -1,0 +1,137 @@
+{%- liquid
+  assign bundle_offers = shop.metaobjects['bundle_offer'].values
+-%}
+
+<link rel="stylesheet" href="{{ 'bundle-builder.css' | asset_url }}">
+
+<div class="bundle-builder page-width" id="bundle-builder">
+
+  <div class="bb-header">
+    <h2 class="bb-header__title">{{ section.settings.heading }}</h2>
+    <p class="bb-header__sub">{{ section.settings.subheading }}</p>
+    <hr class="bb-header__rule">
+  </div>
+
+  <div class="bb-layout">
+
+    <!-- LEFT: Product Picker -->
+    <div class="bb-picker">
+      <nav class="bb-filter-tabs" id="bb-filter-tabs" aria-label="Product categories"></nav>
+      <div class="bb-product-list" id="bb-product-list">
+        <div class="bb-loading" id="bb-product-loading">
+          <div class="bb-spinner"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: Sticky Summary Panel -->
+    <aside class="bb-summary" id="bb-summary">
+
+      <!-- Deal Picker -->
+      <div class="bb-deal-picker">
+        <div class="bb-deal-headline">
+          <span class="bb-deal-headline__title" id="bb-deal-title">-</span>
+          <span class="bb-deal-headline__per" id="bb-deal-per-unit"></span>
+        </div>
+
+        <div class="bb-deal-btns" id="bb-deal-btns">
+          {%- for offer in bundle_offers -%}
+            {%- assign orig  = offer.original_price.value | plus: 0.0 -%}
+            {%- assign final = offer.final_price.value    | plus: 0.0 -%}
+            {%- assign qty   = offer.quantity.value       | plus: 0 -%}
+            {%- assign badge_color = offer.badge_color -%}
+            {%- if orig > 0 -%}
+              {%- assign saved_pct = orig | minus: final | divided_by: orig | times: 100 | round -%}
+            {%- else -%}
+              {%- assign saved_pct = 0 -%}
+            {%- endif -%}
+            <div class="bb-deal-btn-wrap">
+              {%- if offer.badge_text.value != blank -%}
+                <span class="bb-deal-badge" style="background-color: {{ badge_color }};">{{ offer.badge_text.value }}</span>
+              {%- elsif saved_pct > 0 -%}
+                <span class="bb-deal-badge" style="background-color: {{ badge_color }};">{{ saved_pct }}% OFF</span>
+              {%- else -%}
+                <span class="bb-deal-badge bb-deal-badge--ghost"></span>
+              {%- endif -%}
+              <button class="bb-deal-btn"
+                      type="button"
+                      data-quantity="{{ qty }}"
+                      data-collection="{{ offer.collection.value.handle }}"
+                      data-original-price="{{ orig }}"
+                      data-final-price="{{ final }}"
+                      data-title="{{ offer.title.value | escape }}"
+                      data-saved-pct="{{ saved_pct }}">
+                {{ qty }} pack
+              </button>
+            </div>
+          {%- else -%}
+            <p style="color:#999;font-size:13px">No bundle offers found. Add <strong>bundle_offer</strong> metaobjects in Shopify admin.</p>
+          {%- endfor -%}
+        </div>
+
+        {%- if section.settings.note_text != blank -%}
+          <p class="bb-deal-shipping">{{ section.settings.note_text }}</p>
+        {%- endif -%}
+      </div>
+
+      <!-- Slots -->
+      <div class="bb-slots" id="bb-slots"></div>
+
+      <!-- Add to Cart CTA -->
+      <div class="bb-summary__footer">
+        <button class="bb-summary__add-btn" id="bb-add-to-cart-btn" type="button" disabled>
+          Add to Cart
+        </button>
+      </div>
+
+    </aside>
+
+  </div>
+
+</div>
+
+<!-- Mobile Sticky Footer -->
+<div class="bb-mobile-footer" id="bb-mobile-footer">
+  <button class="bb-mobile-toggle" id="bb-mobile-toggle" type="button" aria-expanded="false">
+    <span id="bb-mobile-toggle-text">View Your Bundle</span>
+    <span class="bb-mobile-toggle-chevron" id="bb-mobile-toggle-chevron">&#8743;</span>
+  </button>
+  <div class="bb-mobile-bundle" id="bb-mobile-bundle" hidden>
+    <div class="bb-mobile-items" id="bb-mobile-items"></div>
+  </div>
+  <button class="bb-mobile-add-btn" id="bb-mobile-add-btn" type="button" disabled>
+    Add To Cart
+  </button>
+</div>
+
+<!-- Variant / Size Drawer -->
+<div class="bb-overlay" id="bb-overlay" aria-hidden="true"></div>
+<div class="bb-drawer" id="bb-drawer" role="dialog" aria-modal="true">
+  <div class="bb-drawer__handle"></div>
+  <div class="bb-drawer__header">
+    <h3 class="bb-drawer__title" id="bb-drawer-title">Select a Size</h3>
+    <button class="bb-drawer__close" id="bb-drawer-close" type="button" aria-label="Close">&#10005;</button>
+  </div>
+  <div class="bb-drawer__body" id="bb-drawer-body"></div>
+</div>
+
+<script>
+  window.bbBundleData = {
+    cartUrl:     '{{ routes.cart_url }}',
+    moneyFormat: {{ shop.money_format | json }}
+  };
+</script>
+<script src="{{ 'bundle-builder.js' | asset_url }}" defer></script>
+
+{% schema %}
+{
+  "name": "Bundle Builder",
+  "tag": "section",
+  "settings": [
+    { "type": "text",     "id": "heading",           "label": "Heading",           "default": "Build Your Pack" },
+    { "type": "textarea", "id": "subheading",         "label": "Subheading",        "default": "Create a custom bundle from our collection." },
+    { "type": "text",     "id": "note_text", "label": "Note","default": "Free shipping with 5 or 10 pack!" }
+  ],
+  "presets": [{ "name": "Bundle Builder" }]
+}
+{% endschema %}
