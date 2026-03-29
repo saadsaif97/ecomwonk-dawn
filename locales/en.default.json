@@ -8,6 +8,12 @@
  * ------------------------------------------------------------
  */
 {
+  "wishlist": {
+  "title": "Your wishlist",
+  "close": "Close Wishlist",
+  "view_product": "View product",
+  "share": "Share your wishlist with your loved one"
+},
   "general": {
     "password_page": {
       "login_form_heading": "Enter store using password:",
