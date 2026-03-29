@@ -1,0 +1,81 @@
+{% comment %}
+  EasyWish — Wishlist for Shopify 1.0 & 2.0
+  ==========================================
+  Usage: Add {% render 'easy-wish' %} just before </body> in theme.liquid
+
+  Assets:
+    assets/easy-wish.css  — all styles
+    assets/easy-wish.js   — web components + injection logic
+    sections/easy-wish.liquid — HTML templates (Section Rendering API)
+
+  Theme settings: see the "EasyWish" group in config/settings_schema.json
+{% endcomment %}
+
+{{ 'easy-wish.css' | asset_url | stylesheet_tag }}
+
+{%- comment -%}
+  Inline config — Liquid renders theme settings into a plain JS object.
+  This runs before easy-wish.js (which is deferred) so EasyWishConfig
+  is always defined when the script initialises.
+{%- endcomment -%}
+<script>
+  window.EasyWishConfig = {
+    headerEnabled:  {% if settings.easywish_header_enabled  == false %}false{% else %}true{% endif %},
+    headerPosition: {{ settings.easywish_header_position  | default: 'before_cart' | json }},
+    cardEnabled:    {% if settings.easywish_card_enabled    == false %}false{% else %}true{% endif %},
+    cardPosition:   {{ settings.easywish_card_position     | default: 'top-right'  | json }},
+    pdpEnabled:     {% if settings.easywish_pdp_enabled     == false %}false{% else %}true{% endif %},
+    pdpPosition:    {{ settings.easywish_pdp_position      | default: 'after'      | json }},
+  };
+</script>
+
+{%- comment -%}
+  Override CSS custom properties with values from theme settings.
+  Only emitted when settings exist so the CSS file defaults are used otherwise.
+{%- endcomment -%}
+{%- if settings.easywish_color_active or settings.easywish_color_icon -%}
+  <style>
+    :root {
+      {%- if settings.easywish_color_active -%}--ew-color-active: {{ settings.easywish_color_active }};{%- endif -%}
+      {%- if settings.easywish_color_icon   -%}--ew-color-icon:   {{ settings.easywish_color_icon   }};{%- endif -%}
+    }
+  </style>
+{%- endif -%}
+
+<script src="{{ 'easy-wish.js' | asset_url }}" defer></script>
+
+{%- comment -%}
+  Drawer shell — server-rendered so the panel exists in the DOM immediately
+  (no layout shift). The <easy-wish-drawer> web component wires event
+  listeners in connectedCallback. Product cards inside are loaded on demand
+  via the Section Rendering API (sections/easy-wish.liquid).
+{%- endcomment -%}
+<easy-wish-drawer>
+  <div class="ew-overlay" aria-hidden="true"></div>
+  <div class="ew-drawer" role="dialog" aria-modal="true" aria-label="{{ 'wishlist.title' | t | default: 'Wishlist' }}">
+    <div class="ew-drawer-header">
+      <h2 class="ew-drawer-title">{{ 'wishlist.title' | t | default: 'Wishlist' }}</h2>
+      <div class="ew-drawer-header-actions">
+        <button class="ew-close-btn" type="button" aria-label="{{ 'wishlist.close' | t | default: 'Close wishlist' }}">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <line x1="18" y1="6" x2="6" y2="18"/>
+            <line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <div class="ew-drawer-body">
+      <div class="ew-items-list"></div>
+    </div>
+    <div class="ew-drawer-footer">
+      <button class="ew-share-btn" type="button" aria-label="{{ 'wishlist.share' | t | default: 'Share wishlist' }}">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
+          <polyline points="16 6 12 2 8 6"/>
+          <line x1="12" y1="2" x2="12" y2="15"/>
+        </svg>
+        <span class="ew-share-label">{{ 'wishlist.share' | t | default: 'Share' }}</span>
+      </button>
+    </div>
+  </div>
+</easy-wish-drawer>
