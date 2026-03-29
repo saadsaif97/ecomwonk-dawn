@@ -1,0 +1,385 @@
+/* ===== EasyWish — Core Variables ===== */
+:root {
+  --ew-color-active:  #e53e3e;
+  --ew-color-icon:    #121212;
+  --ew-radius:        8px;
+  --ew-drawer-width:  420px;
+  --ew-z:             9999;
+  --ew-speed:         0.28s;
+}
+
+/* ===== Wishlist Button (heart toggle) ===== */
+easy-wish-button {
+  display:  inline-flex;
+  position: absolute;
+  z-index:  10;
+}
+easy-wish-button.ew-card-top-left     { top: 10px; left:  10px; }
+easy-wish-button.ew-card-top-right    { top: 10px; right: 10px; }
+easy-wish-button.ew-card-bottom-left  { bottom: 10px; left:  10px; }
+easy-wish-button.ew-card-bottom-right { bottom: 10px; right: 10px; }
+easy-wish-button.ew-pdp-btn           { position: static; display: block; width: 100%; margin: 20px 0; }
+
+.ew-btn {
+  display:         inline-flex;
+  align-items:     center;
+  justify-content: center;
+  width:           36px;
+  height:          36px;
+  padding:         0;
+  border:          none;
+  border-radius:   50%;
+  background:      rgba(255,255,255,0.92);
+  cursor:          pointer;
+  transition:      transform var(--ew-speed), background var(--ew-speed);
+  box-shadow:      0 1px 4px rgba(0,0,0,0.15);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+}
+.ew-btn:hover   { transform: scale(1.12); }
+.ew-btn:focus-visible { outline: 2px solid var(--ew-color-active); outline-offset: 2px; }
+
+.ew-btn .ew-heart-icon {
+  width:  18px;
+  height: 18px;
+  fill:   none;
+  stroke: var(--ew-color-icon);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: fill var(--ew-speed), stroke var(--ew-speed);
+}
+
+/* Active / in-wishlist state */
+easy-wish-button.ew-active .ew-btn,
+.ew-btn.ew-active {
+  background: rgba(255,255,255,1);
+}
+easy-wish-button.ew-active .ew-heart-icon,
+.ew-btn.ew-active .ew-heart-icon {
+  fill:   var(--ew-color-active);
+  stroke: var(--ew-color-active);
+}
+
+/* PDP full-width button style */
+.ew-pdp-btn .ew-btn {
+  width:       100%;
+  height:      auto;
+  padding:     12px 20px;
+  gap:         8px;
+  font-size:   15px;
+  font-family: inherit;
+  color:       var(--ew-color-icon);
+  background:  transparent;
+  border:      1px solid currentColor;
+  box-shadow:  none;
+  border-radius: 0;
+}
+.ew-pdp-btn .ew-btn:hover { background: rgba(0,0,0,0.04); transform: none; }
+.ew-pdp-btn .ew-heart-icon { width: 20px; height: 20px; }
+.ew-pdp-btn-label { font-size: 14px; }
+
+/* ===== Header Trigger ===== */
+easy-wish-trigger {
+  display:     inline-flex;
+  align-items: center;
+}
+.ew-trigger-btn {
+  position:        relative;
+  display:         inline-flex;
+  align-items:     center;
+  justify-content: center;
+  width:           44px;
+  height:          44px;
+  padding:         0;
+  border:          none;
+  background:      transparent;
+  cursor:          pointer;
+  color:           var(--ew-color-icon);
+}
+.ew-trigger-btn:focus-visible { outline: 2px solid var(--ew-color-active); outline-offset: 2px; }
+.ew-trigger-btn .ew-heart-icon { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.8; }
+
+/* ===== Count Badge ===== */
+easy-wish-count { display: contents; }
+.ew-count-badge {
+  position:      absolute;
+  top:           4px;
+  right:         4px;
+  min-width:     18px;
+  height:        18px;
+  padding:       0 5px;
+  border-radius: 9px;
+  background:    var(--ew-color-active);
+  color:         #fff;
+  font-size:     10px;
+  font-weight:   700;
+  line-height:   18px;
+  text-align:    center;
+  pointer-events: none;
+}
+
+/* ===== Overlay ===== */
+.ew-overlay {
+  position:   fixed;
+  inset:      0;
+  background: rgba(0,0,0,0.45);
+  z-index:    calc(var(--ew-z) - 1);
+  opacity:    0;
+  pointer-events: none;
+  transition: opacity var(--ew-speed);
+}
+easy-wish-drawer.ew-open .ew-overlay {
+  opacity:        1;
+  pointer-events: all;
+  display: block;
+}
+
+/* ===== Drawer Panel ===== */
+.ew-drawer {
+  position:       fixed;
+  top:            0;
+  right:          0;
+  bottom:         0;
+  width:          min(var(--ew-drawer-width), 100vw);
+  background:     #fff;
+  z-index:        var(--ew-z);
+  display:        flex;
+  flex-direction: column;
+  transform:      translateX(100%);
+  transition:     transform var(--ew-speed) cubic-bezier(0.4,0,0.2,1);
+  box-shadow:     -4px 0 24px rgba(0,0,0,0.12);
+}
+easy-wish-drawer.ew-open .ew-drawer { transform: translateX(0); }
+
+.ew-drawer-header {
+  display:         flex;
+  align-items:     center;
+  justify-content: space-between;
+  padding:         20px 24px;
+  border-bottom:   1px solid #eee;
+  flex-shrink:     0;
+}
+.ew-drawer-title {
+  margin:      0;
+  font-size:   18px;
+  font-weight: 600;
+  font-family: inherit;
+}
+.ew-drawer-header-actions {
+  display:     flex;
+  align-items: center;
+  gap:         4px;
+  flex-shrink: 0;
+}
+
+.ew-share-btn {
+  display:         inline-flex;
+  align-items:     center;
+  gap:             6px;
+  padding:         6px 12px;
+  border:          1px solid #ddd;
+  border-radius:   var(--ew-radius);
+  background:      transparent;
+  color:           inherit;
+  font-size:       13px;
+  font-family:     inherit;
+  font-weight:     500;
+  cursor:          pointer;
+  transition:      background var(--ew-speed), border-color var(--ew-speed), color var(--ew-speed);
+  white-space:     nowrap;
+}
+.ew-share-btn svg      { width: 15px; height: 15px; flex-shrink: 0; }
+.ew-share-btn:hover    { background: #f5f5f5; border-color: #bbb; }
+.ew-share-btn:focus-visible { outline: 2px solid var(--ew-color-active); outline-offset: 2px; }
+.ew-share-btn.ew-share-copied {
+  background:   #f0fdf4;
+  border-color: #86efac;
+  color:        #16a34a;
+}
+
+.ew-close-btn {
+  display:         inline-flex;
+  align-items:     center;
+  justify-content: center;
+  width:           36px;
+  height:          36px;
+  border:          none;
+  background:      transparent;
+  cursor:          pointer;
+  border-radius:   50%;
+  color:           inherit;
+  transition:      background var(--ew-speed);
+}
+.ew-close-btn:hover { background: #f0f0f0; }
+.ew-close-btn svg { width: 18px; height: 18px; }
+
+.ew-drawer-body {
+  flex:       1;
+  overflow-y: auto;
+  padding:    20px 24px;
+}
+
+.ew-drawer-footer {
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  padding:         16px 24px;
+  border-top:      1px solid #eee;
+  flex-shrink:     0;
+}
+.ew-drawer-footer .ew-share-btn {
+  width: 100%;
+  justify-content: center;
+}
+
+/* ===== Drawer States ===== */
+.ew-empty-state {
+  display:         flex;
+  flex-direction:  column;
+  align-items:     center;
+  justify-content: center;
+  height:          100%;
+  gap:             12px;
+  color:           #888;
+  text-align:      center;
+}
+.ew-empty-state svg { width: 48px; height: 48px; opacity: 0.3; }
+.ew-empty-state p   { margin: 0; font-size: 15px; }
+
+.ew-loading {
+  display:     flex;
+  align-items: center;
+  gap:         10px;
+  color:       #888;
+  font-size:   14px;
+  padding:     20px 0;
+}
+.ew-spinner {
+  width:  20px;
+  height: 20px;
+  border: 2px solid #ddd;
+  border-top-color: var(--ew-color-active);
+  border-radius: 50%;
+  animation: ew-spin 0.7s linear infinite;
+}
+@keyframes ew-spin { to { transform: rotate(360deg); } }
+
+/* ===== Wishlist Item Cards (drawer) ===== */
+.ew-items-list { display: flex; flex-direction: column; gap: 16px; }
+
+.ew-item {
+  display:               grid;
+  grid-template-columns: 80px 1fr;
+  gap:                   14px;
+  padding-bottom:        16px;
+  border-bottom:         1px solid #f0f0f0;
+  position:              relative;
+}
+.ew-item:last-child { border-bottom: none; }
+
+.ew-item-image-wrap {
+  width:         80px;
+  height:        80px;
+  border-radius: calc(var(--ew-radius) - 2px);
+  overflow:      hidden;
+  background:    #f5f5f5;
+  flex-shrink:   0;
+}
+.ew-item-image-wrap img {
+  width:      100%;
+  height:     100%;
+  object-fit: cover;
+  display:    block;
+}
+.ew-item-image-placeholder {
+  width:           100%;
+  height:          100%;
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  color:           #ccc;
+}
+
+.ew-item-body      { display: flex; flex-direction: column; gap: 4px; }
+.ew-item-title     { font-size: 14px; font-weight: 600; margin: 0; line-height: 1.3; }
+.ew-item-title a   { color: inherit; text-decoration: none; }
+.ew-item-title a:hover { text-decoration: underline; }
+.ew-item-variant   { font-size: 13px; color: #888; margin: 0; }
+
+.ew-item-price-row    { display: flex; align-items: center; gap: 8px; margin-top: 2px; }
+.ew-item-price        { font-size: 14px; font-weight: 600; }
+.ew-item-compare-price { font-size: 13px; color: #999; text-decoration: line-through; }
+.ew-item-badge-sale {
+  font-size:     11px;
+  padding:       2px 6px;
+  border-radius: 3px;
+  background:    var(--ew-color-active);
+  color:         #fff;
+  font-weight:   700;
+}
+
+.ew-item-actions { display: flex; gap: 8px; margin-top: 8px; flex-wrap: wrap; }
+.ew-atc-btn {
+  flex:        1;
+  min-width:   0;
+  padding:     8px 12px;
+  border:      none;
+  border-radius: var(--ew-radius);
+  background:  #121212;
+  color:       #fff;
+  font-size:   13px;
+  font-family: inherit;
+  font-weight: 600;
+  cursor:      pointer;
+  transition:  background var(--ew-speed), opacity var(--ew-speed);
+  white-space: nowrap;
+}
+.ew-atc-btn:hover:not(:disabled) { background: #333; }
+.ew-atc-btn:disabled              { opacity: 0.55; cursor: default; }
+.ew-atc-btn.ew-atc-success        { background: #2d8a4e; }
+
+.ew-view-btn {
+  padding:         8px 12px;
+  border:          1px solid #ddd;
+  border-radius:   var(--ew-radius);
+  background:      transparent;
+  color:           inherit;
+  font-size:       13px;
+  font-family:     inherit;
+  cursor:          pointer;
+  text-decoration: none;
+  display:         inline-flex;
+  align-items:     center;
+  white-space:     nowrap;
+  transition:      background var(--ew-speed);
+}
+.ew-view-btn:hover { background: #f5f5f5; }
+
+.ew-remove-item-btn {
+  position:        absolute;
+  top:             0;
+  right:           0;
+  width:           28px;
+  height:          28px;
+  border:          none;
+  background:      transparent;
+  cursor:          pointer;
+  color:           #aaa;
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  border-radius:   50%;
+  transition:      color var(--ew-speed), background var(--ew-speed);
+  padding:         0;
+}
+.ew-remove-item-btn svg { width: 14px; height: 14px; }
+.ew-remove-item-btn:hover { color: var(--ew-color-active); background: #fef2f2; }
+
+/* ===== Body lock when drawer open ===== */
+body.ew-locked { overflow: hidden; }
+
+/* ===== Responsive ===== */
+@media (max-width: 500px) {
+  .ew-drawer { width: 100vw; }
+}
