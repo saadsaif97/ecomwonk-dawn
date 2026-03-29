@@ -1,0 +1,130 @@
+{% comment %}
+  EasyWish — Section Rendering API templates
+  ==========================================
+  This section is NOT placed on pages via {% section %}.
+  It is fetched exclusively via the Section Rendering API:
+
+    /products/{handle}?sections=easy-wish  → drawer item card
+    /search?q=&sections=easy-wish          → empty state HTML
+
+  All HTML structures are here so the snippet contains zero HTML strings.
+{% endcomment %}
+
+{%- if product -%}
+
+  {%- comment -%} ============================================================
+    STRUCTURE 1 — DRAWER ITEM CARD
+    Rendered when a product handle is known. Fetched per-product when the
+    wishlist drawer opens. Uses Shopify Liquid for correct money formatting,
+    image URLs (CDN + srcset), translation strings, and live availability.
+  ============================================================ {%- endcomment -%}
+
+  {%- liquid
+    assign first_variant = product.first_available_variant | default: product.variants.first
+    assign on_sale       = false
+    if product.compare_at_price > product.price
+      assign on_sale = true
+    endif
+  -%}
+
+  <div class="ew-item" data-key="{{ product.handle }}">
+
+    <button
+      class="ew-remove-item-btn"
+      type="button"
+      data-key="{{ product.handle }}"
+      aria-label="{{ 'wishlist.remove_item' | t | default: 'Remove from wishlist' }}"
+    >
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
+
+    <div class="ew-item-image-wrap">
+      {%- if product.featured_image -%}
+        <a href="{{ product.url }}" tabindex="-1" aria-hidden="true">
+          {{- product.featured_image
+            | image_url: width: 160
+            | image_tag:
+                loading: 'lazy',
+                widths: '80, 160',
+                width: 80,
+                height: 80,
+                alt: product.featured_image.alt | default: product.title | escape
+          -}}
+        </a>
+      {%- else -%}
+        <div class="ew-item-image-placeholder" aria-hidden="true">
+          <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <rect x="3" y="3" width="18" height="18" rx="2"/>
+            <path d="m3 16 5-5 4 4 3-3 6 6"/>
+            <circle cx="8.5" cy="8.5" r="1.5"/>
+          </svg>
+        </div>
+      {%- endif -%}
+    </div>
+
+    <div class="ew-item-body">
+
+      <p class="ew-item-title">
+        <a href="{{ product.url }}">{{ product.title | escape }}</a>
+      </p>
+
+      {%- unless first_variant.title == 'Default Title' -%}
+        <p class="ew-item-variant">{{ first_variant.title | escape }}</p>
+      {%- endunless -%}
+
+      <div class="ew-item-price-row">
+        <span class="ew-item-price">{{ product.price | money }}</span>
+        {%- if on_sale -%}
+          <s class="ew-item-compare-price">{{ product.compare_at_price | money }}</s>
+          <span class="ew-item-badge-sale">{{ 'products.product.on_sale' | t | default: 'Sale' }}</span>
+        {%- endif -%}
+      </div>
+
+      <div class="ew-item-actions">
+        {%- if first_variant.available -%}
+          <button
+            class="ew-atc-btn"
+            type="button"
+            data-variant-id="{{ first_variant.id }}"
+          >
+            {{- 'products.product.add_to_cart' | t | default: 'Add to cart' -}}
+          </button>
+        {%- else -%}
+          <button class="ew-atc-btn" type="button" disabled>
+            {{- 'products.product.sold_out' | t | default: 'Sold out' -}}
+          </button>
+        {%- endif -%}
+        <a class="ew-view-btn" href="{{ product.url }}">
+          {{- 'wishlist.view_product' | t | default: 'View' -}}
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+{%- elsif request.path == '/search' or request.path == '/' -%}
+
+  {%- comment -%} ============================================================
+    STRUCTURE 2 — EMPTY STATE
+    Fetched via /?sections=easy-wish when wishlist has no items.
+    Kept in Liquid so copy/icon can be themed or translated.
+  ============================================================ {%- endcomment -%}
+
+  <div class="ew-empty-state">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+    </svg>
+    <p>{{ 'wishlist.empty' | t | default: 'Your wishlist is empty.' }}</p>
+  </div>
+
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "EasyWish",
+  "tag": "div",
+  "class": "ew-section-render"
+}
+{% endschema %}
