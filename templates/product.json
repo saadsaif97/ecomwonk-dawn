@@ -58,6 +58,24 @@
             "show_gift_card_recipient": true
           }
         },
+        "swish_wishlist_king_wishlist_button_block_VRnw6R": {
+          "type": "shopify://apps/swish-wishlist-king/blocks/wishlist-button-block/194f5011-a43c-4b22-b12e-eaf20dc4506a",
+          "settings": {
+            "button_style": "plain_accent_1",
+            "button_alignment": "center",
+            "button_content_alignment": "center",
+            "button_margin_top": 0,
+            "button_margin_bottom": 0,
+            "button_max_width": 0,
+            "button_padding_horizontal": 15,
+            "button_full_width": true,
+            "button_show_text": true,
+            "button_show_icon": true,
+            "icon_size": 18,
+            "icon_stroke_width": 1,
+            "icon_offset_vertical": 0
+          }
+        },
         "pumper_bundles_quantity_breaks_app_block_bundle_iW8VKK": {
           "type": "shopify://apps/pumper-bundles/blocks/app-block-bundle/0856870d-2aca-4b1e-a662-cf1797f61270",
           "settings": {
@@ -85,6 +103,7 @@
         "product_variations_XJJPwX",
         "quantity_selector",
         "buy_buttons",
+        "swish_wishlist_king_wishlist_button_block_VRnw6R",
         "pumper_bundles_quantity_breaks_app_block_bundle_iW8VKK",
         "description",
         "share"
