@@ -70,6 +70,67 @@
   </form>
 </div>
 
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.getElementById('CustomInquiryForm');
+  const btn = document.getElementById('SubmitBtn');
+  const status = document.getElementById('FormStatus');
+  const variantInput = document.getElementById('HiddenVariantId');
+
+  // Logic to sync with Shopify's URL variant changes
+  window.addEventListener('popstate', () => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('variant') && variantInput) {
+      variantInput.value = params.get('variant');
+    }
+  });
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    // UI Loading State
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+    btn.style.opacity = '0.7';
+    status.style.display = 'none';
+
+    const formData = new FormData(form);
+    const payload = Object.fromEntries(formData.entries());
+    
+    // Technical metadata for the payload
+    payload.browser_info = navigator.userAgent;
+    payload.path = window.location.pathname;
+
+    try {
+      const response = await fetch('https://flow-webhooks.k8s.eu.codecreationlabs.cloud/webhook/pavgkl03', {
+        method: 'POST',
+        headers: {
+          "Content-Type": "application/json",
+          "X-Api-Key": "61527e3q1e3l333s0v0j1s22476f452i7k0o336h1o070a6q4i1u255m3g0c2r3p"
+        },
+        body: JSON.stringify(payload)
+      });
+
+      if (response.ok) {
+        status.textContent = "✓ Inquiry sent. We'll get back to you shortly.";
+        status.style.cssText = "display: block; background: #ecfdf5; color: #065f46; border: 1px solid #a7f3d0;";
+        form.reset();
+      } else {
+        throw new Error();
+      }
+    } catch (err) {
+      status.textContent = "✕ Something went wrong. Please try again.";
+      status.style.cssText = "display: block; background: #fef2f2; color: #991b1b; border: 1px solid #fecaca;";
+    } finally {
+      btn.disabled = false;
+      btn.textContent = 'Send Message';
+      btn.style.opacity = '1';
+    }
+  });
+});
+</script>
+
+
 
 
 <div {{ block.shopify_attributes }}>
