@@ -10,6 +10,53 @@
   Usage:
   {% render 'buy-buttons', block: block, product: product, product_form_id: product_form_id, section_id: section.id, show_pickup_availability: true %}
 {% endcomment %}
+
+{% comment %} 
+  Add this to a new section or your main-product.liquid 
+{% endcomment %}
+
+<div class="custom-inquiry-container" style="padding: 20px; border: 1px solid #ddd; border-radius: 8px;">
+  <h3>Product Inquiry</h3>
+  <form id="CustomInquiryForm">
+    {%- if product -%}
+      <input type="hidden" name="product_title" value="{{ product.title | escape }}">
+      <input type="hidden" name="product_handle" value="{{ product.handle }}">
+    {%- endif -%}
+
+    <div class="field" style="margin-bottom: 1rem;">
+      <label for="InquiryEmail">Email</label>
+      <input 
+        type="email" 
+        id="InquiryEmail" 
+        name="email" 
+        placeholder="your@email.com" 
+        required 
+        style="width: 100%; padding: 8px;"
+      >
+    </div>
+
+    <div class="field" style="margin-bottom: 1rem;">
+      <label for="InquiryMessage">Message</label>
+      <textarea 
+        id="InquiryMessage" 
+        name="message" 
+        rows="4" 
+        placeholder="Ask us about this item..." 
+        required 
+        style="width: 100%; padding: 8px;"
+      ></textarea>
+    </div>
+
+    <button type="submit" class="button button--primary" style="width: 100%; cursor: pointer;">
+      Send Inquiry
+    </button>
+  </form>
+
+  <div id="FormStatus" style="margin-top: 10px; display: none;"></div>
+</div>
+
+
+
 <div {{ block.shopify_attributes }}>
   {%- if product != blank -%}
     {%- liquid
