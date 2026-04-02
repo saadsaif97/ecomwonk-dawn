@@ -15,44 +15,59 @@
   Add this to a new section or your main-product.liquid 
 {% endcomment %}
 
-<div class="custom-inquiry-container" style="padding: 20px; border: 1px solid #ddd; border-radius: 8px;">
-  <h3>Product Inquiry</h3>
-  <form id="CustomInquiryForm">
+{%- comment -%} 
+  Custom Inquiry Section - Professional Layout
+{%- endcomment -%}
+
+<div class="inquiry-card" style="max-width: 500px; margin: 2rem auto; border: 1px solid #e5e7eb; border-radius: 12px; overflow: hidden; background: #ffffff; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);">
+  
+  {%- if product -%}
+    <div style="background: #f9fafb; padding: 1rem; border-bottom: 1px solid #e5e7eb; display: flex; align-items: center; gap: 12px;">
+       <img src="{{ product.featured_image | image_url: width: 100 }}" alt="" style="width: 50px; height: 50px; object-fit: cover; border-radius: 6px;">
+       <div>
+         <p style="margin: 0; font-size: 0.875rem; color: #6b7280; font-weight: 500;">Inquiring about:</p>
+         <p style="margin: 0; font-size: 1rem; font-weight: 600; color: #111827;">{{ product.title }}</p>
+       </div>
+    </div>
+  {%- endif -%}
+
+  <form id="CustomInquiryForm" style="padding: 1.5rem;">
     {%- if product -%}
       <input type="hidden" name="product_title" value="{{ product.title | escape }}">
-      <input type="hidden" name="product_handle" value="{{ product.handle }}">
+      <input type="hidden" name="product_id" value="{{ product.id }}">
+      <input type="hidden" name="variant_id" id="HiddenVariantId" value="{{ product.selected_or_first_available_variant.id }}">
     {%- endif -%}
 
-    <div class="field" style="margin-bottom: 1rem;">
-      <label for="InquiryEmail">Email</label>
+    <div style="margin-bottom: 1.25rem;">
+      <label for="InquiryEmail" style="display: block; font-size: 0.875rem; font-weight: 500; color: #374151; margin-bottom: 0.5rem;">Email Address</label>
       <input 
         type="email" 
         id="InquiryEmail" 
         name="email" 
-        placeholder="your@email.com" 
+        placeholder="alex@example.com" 
         required 
-        style="width: 100%; padding: 8px;"
+        style="width: 100%; padding: 0.75rem; border: 1px solid #d1d5db; border-radius: 6px; font-size: 1rem; outline-color: #2563eb;"
       >
     </div>
 
-    <div class="field" style="margin-bottom: 1rem;">
-      <label for="InquiryMessage">Message</label>
+    <div style="margin-bottom: 1.5rem;">
+      <label for="InquiryMessage" style="display: block; font-size: 0.875rem; font-weight: 500; color: #374151; margin-bottom: 0.5rem;">Your Question</label>
       <textarea 
         id="InquiryMessage" 
         name="message" 
         rows="4" 
-        placeholder="Ask us about this item..." 
+        placeholder="How can we help you with this item?" 
         required 
-        style="width: 100%; padding: 8px;"
+        style="width: 100%; padding: 0.75rem; border: 1px solid #d1d5db; border-radius: 6px; font-size: 1rem; outline-color: #2563eb; resize: vertical;"
       ></textarea>
     </div>
 
-    <button type="submit" class="button button--primary" style="width: 100%; cursor: pointer;">
-      Send Inquiry
+    <button type="submit" id="SubmitBtn" style="width: 100%; background: #111827; color: white; padding: 0.75rem; border: none; border-radius: 6px; font-weight: 600; font-size: 1rem; cursor: pointer; transition: background 0.2s;">
+      Send Message
     </button>
-  </form>
 
-  <div id="FormStatus" style="margin-top: 10px; display: none;"></div>
+    <div id="FormStatus" style="margin-top: 1rem; font-size: 0.875rem; text-align: center; display: none; padding: 0.5rem; border-radius: 4px;"></div>
+  </form>
 </div>
 
 
