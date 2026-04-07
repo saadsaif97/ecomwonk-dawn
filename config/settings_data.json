@@ -159,15 +159,15 @@
       },
       "14197025361042770389": {
         "type": "shopify://apps/swish-wishlist-king/blocks/app-settings-main/194f5011-a43c-4b22-b12e-eaf20dc4506a",
-        "disabled": false,
+        "disabled": true,
         "settings": {
           "theme_preset": "dawn",
           "color_accent_1": "#000000",
           "color_accent_2": "#000000",
-          "color_solid_button_label": "#FFFFFF",
+          "color_solid_button_label": "#ffffff",
           "color_outline_button_label": "#000000",
-          "color_background_1": "#FFFFFF",
-          "color_background_2": "#FFFFFF",
+          "color_background_1": "#ffffff",
+          "color_background_2": "#ffffff",
           "color_text": "#000000",
           "button_min_height": 45,
           "button_border_width": 1,
@@ -188,7 +188,7 @@
       },
       "4139971114690857691": {
         "type": "shopify://apps/swish-wishlist-king/blocks/wishlist-button-collection/194f5011-a43c-4b22-b12e-eaf20dc4506a",
-        "disabled": false,
+        "disabled": true,
         "settings": {
           "button_style": "plain_accent_1",
           "button_placement": "top-end",
@@ -208,7 +208,7 @@
       },
       "3915993389370480168": {
         "type": "shopify://apps/swish-wishlist-king/blocks/wishlist-link-floating/194f5011-a43c-4b22-b12e-eaf20dc4506a",
-        "disabled": false,
+        "disabled": true,
         "settings": {
           "button_style": "solid_accent_1",
           "button_mode": "always_show",
@@ -232,7 +232,7 @@
       },
       "6680288666557934739": {
         "type": "shopify://apps/swish-wishlist-king/blocks/wishlist-page/194f5011-a43c-4b22-b12e-eaf20dc4506a",
-        "disabled": false,
+        "disabled": true,
         "settings": {
           "column_width": "md",
           "wishlist_empty_link": "shopify://collections/all",
@@ -258,9 +258,19 @@
       },
       "13655089695959051254": {
         "type": "shopify://apps/swish-wishlist-king/blocks/code-access/194f5011-a43c-4b22-b12e-eaf20dc4506a",
-        "disabled": false,
+        "disabled": true,
         "settings": {
           "version": "main"
+        }
+      },
+      "3567375896611253979": {
+        "type": "shopify://apps/easywish/blocks/wishlist-drawer/019d697b-371d-7b56-82f2-946ea8f4d80b",
+        "disabled": false,
+        "settings": {
+          "heading": "My Wishlist",
+          "guest_message": "Log in to save your wishlist to your account.",
+          "login_label": "Log in",
+          "empty_message": "Your wishlist is empty."
         }
       }
     },
