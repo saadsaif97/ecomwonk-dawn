@@ -272,6 +272,17 @@
           "login_label": "Log in",
           "empty_message": "Your wishlist is empty."
         }
+      },
+      "2474139145103183118": {
+        "type": "shopify://apps/easywish/blocks/wishlist-header/019d697b-371d-7b56-82f2-946ea8f4d80b",
+        "disabled": false,
+        "settings": {
+          "placement": "before",
+          "aria_label": "Wishlist",
+          "icon_size": 22,
+          "badge_color": "#e74c3c",
+          "badge_text_color": "#ffffff"
+        }
       }
     },
     "color_schemes": {
