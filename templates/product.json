@@ -47,6 +47,18 @@
             "color_mode": "variant"
           }
         },
+        "easywish_wishlist_heart_QgiPHM": {
+          "type": "shopify://apps/easywish/blocks/wishlist-heart/019d697b-371d-7b56-82f2-946ea8f4d80b",
+          "settings": {
+            "button_label": "Add to Wishlist",
+            "added_label": "Wishlisted",
+            "show_label": true,
+            "filled_color": "#e74c3c",
+            "empty_color": "#000000",
+            "icon_size": 22,
+            "label_size": 14
+          }
+        },
         "quantity_selector": {
           "type": "quantity_selector",
           "settings": {}
@@ -101,6 +113,7 @@
         "judge_me_reviews_preview_badge_AFH8QM",
         "variant_picker",
         "product_variations_XJJPwX",
+        "easywish_wishlist_heart_QgiPHM",
         "quantity_selector",
         "buy_buttons",
         "swish_wishlist_king_wishlist_button_block_VRnw6R",
