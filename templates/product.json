@@ -53,10 +53,18 @@
             "button_label": "Add to Wishlist",
             "added_label": "Wishlisted",
             "show_label": true,
+            "full_width": true,
+            "text_align": "center",
+            "padding_v": 8,
+            "padding_h": 0,
+            "show_border": true,
+            "border_color": "#000000",
+            "border_radius": 4,
             "filled_color": "#e74c3c",
             "empty_color": "#000000",
             "icon_size": 22,
-            "label_size": 14
+            "label_size": 14,
+            "enable_animation": true
           }
         },
         "quantity_selector": {
