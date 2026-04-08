@@ -283,6 +283,22 @@
           "badge_color": "#e74c3c",
           "badge_text_color": "#ffffff"
         }
+      },
+      "2516089140961158704": {
+        "type": "shopify://apps/easywish/blocks/wishlist-fab/019d697b-371d-7b56-82f2-946ea8f4d80b",
+        "disabled": false,
+        "settings": {
+          "position": "bottom-right",
+          "bottom_offset": 24,
+          "side_offset": 24,
+          "button_size": 56,
+          "icon_size": 24,
+          "bg_color": "#000000",
+          "icon_color": "#ffffff",
+          "badge_color": "#e74c3c",
+          "badge_text_color": "#ffffff",
+          "aria_label": "Open Wishlist"
+        }
       }
     },
     "color_schemes": {
