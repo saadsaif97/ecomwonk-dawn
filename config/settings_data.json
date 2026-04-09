@@ -308,6 +308,21 @@
           "badge_color": "#e74c3c",
           "badge_text_color": "#ffffff"
         }
+      },
+      "14931479126657248516": {
+        "type": "shopify://apps/easywish/blocks/wishlist-card/019d70ce-efc8-7c46-80f0-ba823f939883",
+        "disabled": false,
+        "settings": {
+          "position": "top-right",
+          "offset_v": 8,
+          "offset_h": 8,
+          "icon_size": 20,
+          "filled_color": "#e74c3c",
+          "empty_color": "#000000",
+          "bg_color": "#ffffff",
+          "bg_radius": 50,
+          "enable_animation": true
+        }
       }
     },
     "color_schemes": {
