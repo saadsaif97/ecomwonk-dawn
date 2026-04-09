@@ -263,29 +263,26 @@
           "version": "main"
         }
       },
-      "3567375896611253979": {
-        "type": "shopify://apps/easywish/blocks/wishlist-drawer/019d697b-371d-7b56-82f2-946ea8f4d80b",
+      "11570249006092603224": {
+        "type": "shopify://apps/easywish/blocks/wishlist-drawer/019d70ce-efc8-7c46-80f0-ba823f939883",
         "disabled": false,
         "settings": {
           "heading": "My Wishlist",
           "guest_message": "Log in to save your wishlist to your account.",
           "login_label": "Log in",
-          "empty_message": "Your wishlist is empty."
+          "empty_message": "Your wishlist is empty.",
+          "share_label": "Share Wishlist",
+          "share_copied_label": "Link copied!",
+          "heart_color_filled": "#e74c3c",
+          "heart_color_unfilled": "#1a1a1a",
+          "bg_color": "#ffffff",
+          "text_color": "#1a1a1a",
+          "panel_width": 480,
+          "overlay_color": "#000000"
         }
       },
-      "2474139145103183118": {
-        "type": "shopify://apps/easywish/blocks/wishlist-header/019d697b-371d-7b56-82f2-946ea8f4d80b",
-        "disabled": false,
-        "settings": {
-          "placement": "before",
-          "aria_label": "Wishlist",
-          "icon_size": 22,
-          "badge_color": "#e74c3c",
-          "badge_text_color": "#ffffff"
-        }
-      },
-      "2516089140961158704": {
-        "type": "shopify://apps/easywish/blocks/wishlist-fab/019d697b-371d-7b56-82f2-946ea8f4d80b",
+      "17833686391224150537": {
+        "type": "shopify://apps/easywish/blocks/wishlist-fab/019d70ce-efc8-7c46-80f0-ba823f939883",
         "disabled": false,
         "settings": {
           "position": "bottom-right",
@@ -298,6 +295,18 @@
           "badge_color": "#e74c3c",
           "badge_text_color": "#ffffff",
           "aria_label": "Open Wishlist"
+        }
+      },
+      "16868858940248139150": {
+        "type": "shopify://apps/easywish/blocks/wishlist-header/019d70ce-efc8-7c46-80f0-ba823f939883",
+        "disabled": false,
+        "settings": {
+          "placement": "before",
+          "aria_label": "Wishlist",
+          "icon_size": 22,
+          "icon_color": "#000000",
+          "badge_color": "#e74c3c",
+          "badge_text_color": "#ffffff"
         }
       }
     },
