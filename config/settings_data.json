@@ -317,11 +317,13 @@
           "offset_v": 8,
           "offset_h": 8,
           "icon_size": 20,
+          "stroke_width": 7,
           "filled_color": "#e74c3c",
           "empty_color": "#000000",
           "bg_color": "#ffffff",
           "bg_radius": 50,
-          "enable_animation": true
+          "enable_animation": true,
+          "custom_selectors": ""
         }
       }
     },
