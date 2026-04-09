@@ -12,6 +12,26 @@
     "main": {
       "type": "main-product",
       "blocks": {
+        "easywish_wishlist_heart_PNJePb": {
+          "type": "shopify://apps/easywish/blocks/wishlist-heart/019d70ce-efc8-7c46-80f0-ba823f939883",
+          "settings": {
+            "button_label": "Add to Wishlist",
+            "added_label": "Wishlisted",
+            "show_label": true,
+            "full_width": false,
+            "text_align": "left",
+            "padding_v": 8,
+            "padding_h": 0,
+            "show_border": false,
+            "border_color": "#000000",
+            "border_radius": 4,
+            "filled_color": "#e74c3c",
+            "empty_color": "#000000",
+            "icon_size": 22,
+            "label_size": 14,
+            "enable_animation": true
+          }
+        },
         "vendor": {
           "type": "text",
           "settings": {
@@ -45,26 +65,6 @@
             "option_value_metafield": "custom.variation_value",
             "products": "{{ product.metafields.custom.variation_products.value }}",
             "color_mode": "variant"
-          }
-        },
-        "easywish_wishlist_heart_QgiPHM": {
-          "type": "shopify://apps/easywish/blocks/wishlist-heart/019d697b-371d-7b56-82f2-946ea8f4d80b",
-          "settings": {
-            "button_label": "Add to Wishlist",
-            "added_label": "Wishlisted",
-            "show_label": true,
-            "full_width": true,
-            "text_align": "center",
-            "padding_v": 8,
-            "padding_h": 0,
-            "show_border": true,
-            "border_color": "#000000",
-            "border_radius": 4,
-            "filled_color": "#e74c3c",
-            "empty_color": "#000000",
-            "icon_size": 22,
-            "label_size": 14,
-            "enable_animation": true
           }
         },
         "quantity_selector": {
@@ -115,13 +115,13 @@
         }
       },
       "block_order": [
+        "easywish_wishlist_heart_PNJePb",
         "vendor",
         "title",
         "price",
         "judge_me_reviews_preview_badge_AFH8QM",
         "variant_picker",
         "product_variations_XJJPwX",
-        "easywish_wishlist_heart_QgiPHM",
         "quantity_selector",
         "buy_buttons",
         "swish_wishlist_king_wishlist_button_block_VRnw6R",
