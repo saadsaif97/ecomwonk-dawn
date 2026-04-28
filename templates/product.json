@@ -51,8 +51,8 @@
           "type": "quantity_selector",
           "settings": {}
         },
-        "easywish_wishlist_heart_PNJePb": {
-          "type": "shopify://apps/easywish/blocks/wishlist-heart/019d70ce-efc8-7c46-80f0-ba823f939883",
+        "easywish_wishlist_heart_PeiH8k": {
+          "type": "shopify://apps/easywish/blocks/wishlist-heart/019d70e1-8ddb-70d9-8517-2a0aa6cad9f0",
           "settings": {
             "button_label": "Add to Wishlist",
             "added_label": "Wishlisted",
@@ -63,11 +63,11 @@
             "padding_h": 0,
             "show_border": true,
             "border_color": "#000000",
-            "border_radius": 8,
+            "border_radius": 4,
             "filled_color": "#e74c3c",
             "empty_color": "#000000",
             "icon_size": 22,
-            "stroke_width": 2,
+            "stroke_width": 7,
             "label_size": 14,
             "enable_animation": true
           }
@@ -123,7 +123,7 @@
         "variant_picker",
         "product_variations_XJJPwX",
         "quantity_selector",
-        "easywish_wishlist_heart_PNJePb",
+        "easywish_wishlist_heart_PeiH8k",
         "buy_buttons",
         "swish_wishlist_king_wishlist_button_block_VRnw6R",
         "pumper_bundles_quantity_breaks_app_block_bundle_iW8VKK",
