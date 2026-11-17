@@ -265,7 +265,7 @@
       },
       "9217451941275966911": {
         "type": "shopify://apps/easywish/blocks/wishlist-card/019d70e1-8ddb-70d9-8517-2a0aa6cad9f0",
-        "disabled": false,
+        "disabled": true,
         "settings": {
           "position": "top-right",
           "offset_v": 8,
@@ -285,7 +285,7 @@
       },
       "6664713423560845367": {
         "type": "shopify://apps/easywish/blocks/wishlist-drawer/019d70e1-8ddb-70d9-8517-2a0aa6cad9f0",
-        "disabled": false,
+        "disabled": true,
         "settings": {
           "heading": "My Wishlist",
           "guest_message": "Log in to save your wishlist to your account.",
@@ -304,7 +304,7 @@
       },
       "11901882686853965596": {
         "type": "shopify://apps/easywish/blocks/wishlist-fab/019d70e1-8ddb-70d9-8517-2a0aa6cad9f0",
-        "disabled": false,
+        "disabled": true,
         "settings": {
           "position": "bottom-right",
           "bottom_offset": 24,
@@ -321,7 +321,7 @@
       },
       "401587058129479622": {
         "type": "shopify://apps/easywish/blocks/wishlist-header/019d70e1-8ddb-70d9-8517-2a0aa6cad9f0",
-        "disabled": false,
+        "disabled": true,
         "settings": {
           "placement": "before",
           "aria_label": "Wishlist",

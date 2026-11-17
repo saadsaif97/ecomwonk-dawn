@@ -51,57 +51,38 @@
           "type": "quantity_selector",
           "settings": {}
         },
-        "easywish_wishlist_heart_PeiH8k": {
-          "type": "shopify://apps/easywish/blocks/wishlist-heart/019d70e1-8ddb-70d9-8517-2a0aa6cad9f0",
-          "settings": {
-            "button_label": "Add to Wishlist",
-            "added_label": "Wishlisted",
-            "show_label": true,
-            "full_width": true,
-            "text_align": "center",
-            "padding_v": 8,
-            "padding_h": 0,
-            "show_border": true,
-            "border_color": "#000000",
-            "border_radius": 4,
-            "filled_color": "#e74c3c",
-            "empty_color": "#000000",
-            "icon_size": 22,
-            "stroke_width": 7,
-            "label_size": 14,
-            "enable_animation": true
-          }
-        },
         "buy_buttons": {
           "type": "buy_buttons",
           "settings": {
-            "show_dynamic_checkout": true,
-            "show_gift_card_recipient": true
+            "show_dynamic_checkout": false,
+            "show_gift_card_recipient": false
           }
         },
-        "swish_wishlist_king_wishlist_button_block_VRnw6R": {
-          "type": "shopify://apps/swish-wishlist-king/blocks/wishlist-button-block/194f5011-a43c-4b22-b12e-eaf20dc4506a",
+        "frequently_bought_upsells_fbt_widget_kkxbN3": {
+          "type": "shopify://apps/frequently-bought-upsells/blocks/fbt-widget/01a1ea53-ab45-794d-9966-be3273207ebd",
           "settings": {
-            "button_style": "plain_accent_1",
-            "button_alignment": "center",
-            "button_content_alignment": "center",
-            "button_margin_top": 0,
-            "button_margin_bottom": 0,
-            "button_max_width": 0,
-            "button_padding_horizontal": 15,
-            "button_full_width": true,
-            "button_show_text": true,
-            "button_show_icon": true,
-            "icon_size": 18,
-            "icon_stroke_width": 1,
-            "icon_offset_vertical": 0
-          }
-        },
-        "pumper_bundles_quantity_breaks_app_block_bundle_iW8VKK": {
-          "type": "shopify://apps/pumper-bundles/blocks/app-block-bundle/0856870d-2aca-4b1e-a662-cf1797f61270",
-          "settings": {
-            "selected_product": "{{product}}",
-            "using_page_builder": false
+            "product": "{{product}}",
+            "heading": "Frequently bought together",
+            "subheading": "",
+            "button_text": "Add selected to cart",
+            "max_items": "3",
+            "preselect": true,
+            "fallback": "recommendations",
+            "after_add": "drawer",
+            "layout": "list",
+            "show_images": true,
+            "show_badge": true,
+            "image_size": 72,
+            "font_size": 15,
+            "spacing": 16,
+            "radius": 8,
+            "color_text": "",
+            "color_bg": "",
+            "color_border": "#e3e3e3",
+            "color_button": "#111111",
+            "color_button_text": "#ffffff",
+            "color_accent": "#0a7d3b",
+            "custom_css": ""
           }
         },
         "description": {
@@ -123,10 +104,8 @@
         "variant_picker",
         "product_variations_XJJPwX",
         "quantity_selector",
-        "easywish_wishlist_heart_PeiH8k",
         "buy_buttons",
-        "swish_wishlist_king_wishlist_button_block_VRnw6R",
-        "pumper_bundles_quantity_breaks_app_block_bundle_iW8VKK",
+        "frequently_bought_upsells_fbt_widget_kkxbN3",
         "description",
         "share"
       ],
