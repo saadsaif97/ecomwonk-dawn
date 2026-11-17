@@ -58,33 +58,6 @@
             "show_gift_card_recipient": false
           }
         },
-        "frequently_bought_upsells_fbt_widget_kkxbN3": {
-          "type": "shopify://apps/frequently-bought-upsells/blocks/fbt-widget/01a1ea53-ab45-794d-9966-be3273207ebd",
-          "settings": {
-            "product": "{{product}}",
-            "heading": "Frequently bought together",
-            "subheading": "",
-            "button_text": "Add selected to cart",
-            "max_items": "3",
-            "preselect": true,
-            "fallback": "recommendations",
-            "after_add": "drawer",
-            "layout": "list",
-            "show_images": true,
-            "show_badge": true,
-            "image_size": 72,
-            "font_size": 15,
-            "spacing": 16,
-            "radius": 8,
-            "color_text": "",
-            "color_bg": "",
-            "color_border": "#e3e3e3",
-            "color_button": "#111111",
-            "color_button_text": "#ffffff",
-            "color_accent": "#0a7d3b",
-            "custom_css": ""
-          }
-        },
         "description": {
           "type": "description",
           "settings": {}
@@ -105,7 +78,6 @@
         "product_variations_XJJPwX",
         "quantity_selector",
         "buy_buttons",
-        "frequently_bought_upsells_fbt_widget_kkxbN3",
         "description",
         "share"
       ],
