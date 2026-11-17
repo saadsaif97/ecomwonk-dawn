@@ -336,7 +336,7 @@
       },
       "1438809622711267403": {
         "type": "shopify://apps/frequently-bought-upsells/blocks/fbt-embed/01a1ea53-ab45-794d-9966-be3273207ebd",
-        "disabled": false,
+        "disabled": true,
         "settings": {
           "atc_selector": ".product-form__buttons, product-form form[action*='/cart/add'] [type='submit'], form[action*='/cart/add'] [name='add'], form[action*='/cart/add'] [type='submit']",
           "heading": "Frequently bought together",
