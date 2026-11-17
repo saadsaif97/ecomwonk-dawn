@@ -69,7 +69,7 @@
             "preselect": true,
             "fallback": "collection",
             "after_add": "drawer",
-            "layout": "list",
+            "layout": "compact",
             "show_images": true,
             "show_badge": true,
             "image_size": 72,
