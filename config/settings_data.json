@@ -334,32 +334,21 @@
           "link_custom_element": false
         }
       },
-      "1438809622711267403": {
-        "type": "shopify://apps/frequently-bought-upsells/blocks/fbt-embed/01a1ea53-ab45-794d-9966-be3273207ebd",
-        "disabled": true,
+      "16658496152650796602": {
+        "type": "shopify://apps/easy-bought-together-upsells/blocks/fbt-popup/01a1eb64-d434-74ff-807e-f43824c26197",
+        "disabled": false,
         "settings": {
-          "atc_selector": ".product-form__buttons, product-form form[action*='/cart/add'] [type='submit'], form[action*='/cart/add'] [name='add'], form[action*='/cart/add'] [type='submit']",
-          "heading": "Frequently bought together",
-          "subheading": "",
-          "button_text": "Add selected to cart",
-          "max_items": "3",
-          "preselect": true,
-          "fallback": "recommendations",
-          "after_add": "drawer",
-          "layout": "compact",
+          "title": "Complete your order",
+          "description": "Customers who bought this also added these.",
+          "max_items": 3,
+          "fallback": "collection",
           "show_images": true,
-          "show_badge": true,
-          "image_size": 72,
-          "font_size": 15,
-          "spacing": 16,
-          "radius": 8,
-          "color_text": "",
-          "color_bg": "",
-          "color_border": "#e3e3e3",
+          "once_per_visit": true,
+          "radius": 12,
+          "color_bg": "#ffffff",
+          "color_text": "#1a1a1a",
           "color_button": "#111111",
-          "color_button_text": "#ffffff",
-          "color_accent": "#0a7d3b",
-          "custom_css": ""
+          "color_button_text": "#ffffff"
         }
       }
     },
