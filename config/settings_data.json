@@ -343,7 +343,7 @@
           "max_items": 3,
           "fallback": "collection",
           "show_images": true,
-          "once_per_visit": true,
+          "once_per_visit": false,
           "radius": 12,
           "color_bg": "#ffffff",
           "color_text": "#1a1a1a",
