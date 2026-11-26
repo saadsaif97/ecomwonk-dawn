@@ -59,14 +59,14 @@
           }
         },
         "frequently_bought_upsells_fbt_widget_R94TaH": {
-          "type": "shopify://apps/frequently-bought-upsells/blocks/fbt-widget/01a1eb64-d434-74ff-807e-f43824c26197",
+          "type": "shopify://apps/easy-bought-together-upsells/blocks/fbt-widget/01a1eb64-d434-74ff-807e-f43824c26197",
+          "disabled": true,
           "settings": {
             "product": "{{product}}",
             "heading": "Frequently bought together",
             "subheading": "",
             "button_text": "Add selected to cart",
             "max_items": "3",
-            "preselect": true,
             "fallback": "collection",
             "after_add": "drawer",
             "layout": "compact",
